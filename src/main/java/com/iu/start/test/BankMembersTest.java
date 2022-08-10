@@ -43,7 +43,7 @@ public class BankMembersTest {
 			int result = bankBookDAO.setChangeSale(bankBookDTO);
 			
 			System.out.println(result == 1);
-			bankBookDTO.setBooknum(1);
+			bankBookDTO.setBookNum(1L);
 			
 			//bankBookDAO.getDetail(bankBookDTO);
 			

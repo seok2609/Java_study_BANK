@@ -10,9 +10,9 @@
 	<h1>Join Page</h1>
 	<form action="./join" method="post">
         <div>
-            ID <br> <input type="text" placeholder="ID입력" name="username"> 
+            ID <br> <input type="text" placeholder="ID입력" name="userName"> 
             ID 중복체크 <input type="button" value="ID 중복체크"> <br>
-            PW  <br> <input type="password" name="password"> <br>
+            PW  <br> <input type="password" name="passWord"> <br>
             PW 확인 <br> <input type="password" name="pw"><br>
 
             이름 <br> <input type="text" value="" name="name"> <br>

@@ -10,7 +10,7 @@ public class BankBookTestMain {
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		
-		bankBookDTO.setBooknum(1L);
+		bankBookDTO.setBookNum(1L);
 		
 		try {
 			bankBookDTO = bankBookDAO.getDetail(bankBookDTO);

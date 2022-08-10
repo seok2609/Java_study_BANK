@@ -26,10 +26,10 @@ public class BankBookDAO implements BookDAO{
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		//4. ?값 세팅
-		st.setLong(1, bankBookDTO.getBooknum());
-		st.setString(2, bankBookDTO.getBookname());
-		st.setDouble(3, bankBookDTO.getBookrate());
-		st.setInt(4, bankBookDTO.getBooksale());
+		st.setLong(1, bankBookDTO.getBookNum());
+		st.setString(2, bankBookDTO.getBookName());
+		st.setDouble(3, bankBookDTO.getBookRate());
+		st.setInt(4, bankBookDTO.getBookSale());
 		
 		
 		//5. 최종 전송 후 출력
@@ -65,10 +65,10 @@ public class BankBookDAO implements BookDAO{
 		
 		while(rs.next()) {
 			BankBookDTO bankBookDTO = new BankBookDTO();
-			bankBookDTO.setBooknum(rs.getLong("BOOKNUM"));
-			bankBookDTO.setBookname(rs.getString("BOOKNAME"));
-			bankBookDTO.setBookrate(rs.getDouble("BOOKRATE"));
-			bankBookDTO.setBooksale(rs.getInt("BOOKSALE"));
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
 			ar.add(bankBookDTO);
 		}
 		
@@ -92,8 +92,8 @@ public class BankBookDAO implements BookDAO{
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		//4. ?값 세팅
-		st.setInt(1, bankBookDTO.getBooksale());
-		st.setLong(2, bankBookDTO.getBooknum());
+		st.setInt(1, bankBookDTO.getBookSale());
+		st.setLong(2, bankBookDTO.getBookNum());
 		
 		//5. 최종 전송 후 출력
 		int result = st.executeUpdate();
@@ -101,8 +101,8 @@ public class BankBookDAO implements BookDAO{
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			bankBookDTO.setBooksale(rs.getInt("BOOKSALE"));
-			bankBookDTO.setBooknum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
 		}
 		
 		//6. 자원해제
@@ -128,17 +128,17 @@ public class BankBookDAO implements BookDAO{
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		//4. ?값 세팅
-		st.setLong(1, bankBookDTO.getBooknum());
+		st.setLong(1, bankBookDTO.getBookNum());
 		
 		//5. 최종 전송 후 출력
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
 			bankBookDTO2 = new BankBookDTO();
-			bankBookDTO2.setBooknum(rs.getLong("BOOKNUM"));
-			bankBookDTO2.setBookname(rs.getString("BOOKNAME"));
-			bankBookDTO2.setBookrate(rs.getDouble("BOOKRATE"));
-			bankBookDTO2.setBooksale(rs.getInt("BOOKSALE"));
+			bankBookDTO2.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO2.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO2.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO2.setBookSale(rs.getInt("BOOKSALE"));
 			
 		}
 		

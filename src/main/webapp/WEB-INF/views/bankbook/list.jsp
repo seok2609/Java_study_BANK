@@ -30,15 +30,17 @@
 	<tbody>
 		<% for(BankBookDTO bankBookDTO : ar) { %>
 			<tr>
-				<td><a href ="./detail?Booknum=<%=bankBookDTO.getBooknum()%>"> <%= bankBookDTO.getBookname() %> </a></td>
-				<td><%= bankBookDTO.getBookrate() %> </td>
+				<td><a href ="./detail?BookNum=<%=bankBookDTO.getBookNum()%>"> <%= bankBookDTO.getBookName() %> </a></td>
+				<td><%= bankBookDTO.getBookRate() %> </td>
 			</tr>
 		
 		<% } %>
 	</tbody>
 	</table>
 	
-	<a href="detail">Detail</a>
+	<a href="./add">상품등록</a>
+	<a href="./detail">Detail</a>
+	
 
 </body>
 </html>

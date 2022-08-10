@@ -20,6 +20,8 @@
 	
 	<!-- 절대경로 -->
 	<a href="/member/join">Join</a>
+
+	<a href="./list">리스트보기</a>
 	
 	<%if(bankBookDTO != null) { %>
 	
@@ -32,11 +34,10 @@
 			</tr>
 		<tbody>
 			<tr>
-				<td><%= bankBookDTO.getBooknum() %> </td>
-				<td><%= bankBookDTO.getBookname() %> </td>
-				<td><%= bankBookDTO.getBookrate() %> </td>
-				<td><%= bankBookDTO.getBooksale() %> </td> 
-				<td><% if(bankBookDTO.getBooksale()==1) {%>
+				<td><%= bankBookDTO.getBookNum() %> </td>
+				<td><%= bankBookDTO.getBookName() %> </td>
+				<td><%= bankBookDTO.getBookRate() %> </td>
+				<td><% if(bankBookDTO.getBookSale()==1) {%>
 						판매중
 					<%}else {%>
 					    판매완료
@@ -48,6 +49,8 @@
 	<%}else {%>
 		<h3>Data가 없다</h3>
 	<%} %>
+	
+	
 
 </body>
 </html>

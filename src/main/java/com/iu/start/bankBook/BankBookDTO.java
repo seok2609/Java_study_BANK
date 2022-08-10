@@ -1,38 +1,36 @@
 package com.iu.start.bankBook;
 
-import java.sql.Timestamp;
-
 public class BankBookDTO {
 	
-	private Long booknum;
-	private String bookname;
-	private Double bookrate;
-	private Integer booksale;
+	private Long bookNum;
+	private String bookName;
+	private Double bookRate;
+	private Integer bookSale;
 	
 	
-	public long getBooknum() {
-		return booknum;
+	public Long getBookNum() {
+		return bookNum;
 	}
-	public void setBooknum(long l) {
-		this.booknum = l;
+	public void setBookNum(Long bookNum) {
+		this.bookNum = bookNum;
 	}
-	public String getBookname() {
-		return bookname;
+	public String getBookName() {
+		return bookName;
 	}
-	public void setBookname(String bookname) {
-		this.bookname = bookname;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
-	public double getBookrate() {
-		return bookrate;
+	public Double getBookRate() {
+		return bookRate;
 	}
-	public void setBookrate(double bookrate) {
-		this.bookrate = bookrate;
+	public void setBookRate(Double bookRate) {
+		this.bookRate = bookRate;
 	}
-	public int getBooksale() {
-		return booksale;
+	public Integer getBookSale() {
+		return bookSale;
 	}
-	public void setBooksale(int booksale) {
-		this.booksale = booksale;
+	public void setBookSale(Integer bookSale) {
+		this.bookSale = bookSale;
 	}
 	
 	
