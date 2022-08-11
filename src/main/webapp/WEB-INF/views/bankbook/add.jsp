@@ -29,6 +29,8 @@
 			<button type="submit">추가</button>
 		</div>
 		
+<img src="../resources/cat2.jpg">
+		
 	</form>
 	
 

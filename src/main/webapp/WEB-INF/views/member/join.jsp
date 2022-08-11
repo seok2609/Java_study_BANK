@@ -29,6 +29,8 @@
             <input type="submit" value="회원가입">
         </div>
     </form>
+    
+<img src="../resources/cat2.jpg">
 
 </body>
 </html>

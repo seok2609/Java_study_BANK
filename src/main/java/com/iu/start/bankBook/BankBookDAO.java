@@ -149,6 +149,66 @@ public class BankBookDAO implements BookDAO{
 		
 		return bankBookDTO2;
 	}
+
+
+	@Override
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
+		
+		//DB연결
+		Connection con = DBConnector.getConnection();
+		
+		//Query문 작성
+		String sql = "UPDATE BANKBOOK SET BOOKNAME =? , BOOKRATE =? WHERE BOOKNUM =?";
+		
+		//QUery문 미리 전송
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//?값 있으면 세팅
+		st.setString(1, bankBookDTO.getBookName());
+		st.setDouble(2, bankBookDTO.getBookRate());
+		st.setLong(3, bankBookDTO.getBookNum());
+		
+		//최종 전송 후 출력
+		int result = st.executeUpdate();
+		
+//		ResultSet rs = st.executeQuery();
+//		
+//		while(rs.next()) {
+//			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+//			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+//			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+//		}
+
+		//자원해제
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+
+
+	@Override
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception {
+		
+		//DB연결
+		Connection con = DBConnector.getConnection();
+		
+		//Query문 작성
+		String sql = "DELETE BANKBOOK WHERE BOOKNUM =?";
+		
+		//Query문 미리 전송
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//?값 있으면 세팅
+		st.setLong(1, bankBookDTO.getBookNum());
+		
+		//최종 전송 후 출력
+		int result = st.executeUpdate();
+		
+		//자원해제
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
 	
 
 }

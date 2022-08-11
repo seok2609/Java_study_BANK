@@ -11,12 +11,14 @@
 	
 	<form action="search" method="post">
 		<input type="text" name="search">
-		<input type="button" value="search">
+		<input type="submit" value="search">
 		<input type="reset" value="초기화">
 		<input type="submit" value="SUBMIT">
 		<button type="submit">BUTTON</button>
 		<!-- type를 생략하면 submit 이 기본 -->
 	</form>
+	
+<img src="../resources/cat2.jpg">
 
 </body>
 </html>

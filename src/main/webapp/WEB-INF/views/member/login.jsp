@@ -11,8 +11,8 @@
 	
 	<form action="./login" method="post">
         <div class="container">
-            ID <input type="text" placeholder="ID입력" name="id">
-            PW <input type="password" name="pw">
+            ID <input type="text" placeholder="ID입력" name="userName">
+            PW <input type="password" name="passWord">
         </div>
 
         <div>
@@ -25,6 +25,8 @@
             <input type="button" value="ID/PW찾기">
         </div>
     </form>
+    
+<img src="../resources/cat2.jpg">
 
 </body>
 </html>

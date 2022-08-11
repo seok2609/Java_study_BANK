@@ -13,7 +13,7 @@ public class BankBookTestMain {
 		bankBookDTO.setBookNum(1L);
 		
 		try {
-			bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+			//bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
 			
 			System.out.println(bankBookDTO != null);
 		} catch (Exception e) {

@@ -1,10 +1,12 @@
 <%@page import="com.iu.start.bankBook.BankBookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%-- 
 <%
+	//요청이 발생하면 생성, 응답이 나가면 소멸 : RequestScope
 	BankBookDTO bankBookDTO = (BankBookDTO)request.getAttribute("dto");
 %>
+--%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,11 @@
 
 	<a href="./list">리스트보기</a>
 	
-	<%if(bankBookDTO != null) { %>
+	<a href="./update?bookNum=${dto.bookNum}">수정하기</a>
+	
+	<a href="./delete?bookNum=${dto.bookNum}">삭제하기</a>
+	
+	
 	
 	<table border="1">
 			<tr>
@@ -34,23 +40,13 @@
 			</tr>
 		<tbody>
 			<tr>
-				<td><%= bankBookDTO.getBookNum() %> </td>
-				<td><%= bankBookDTO.getBookName() %> </td>
-				<td><%= bankBookDTO.getBookRate() %> </td>
-				<td><% if(bankBookDTO.getBookSale()==1) {%>
-						판매중
-					<%}else {%>
-					    판매완료
-					<%} %>		
-				</td>
+				<td>${requestScope.dto.getBookNum()}</td>
+				<td>${requestScope.dto.bookName}</td>
+				<td>${dto.bookRate}</td>
 			</tr>
 		</tbody>
 	</table>
-	<%}else {%>
-		<h3>Data가 없다</h3>
-	<%} %>
 	
-	
-
+<img src="../resources/cat2.jpg">
 </body>
 </html>

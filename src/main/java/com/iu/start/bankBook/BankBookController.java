@@ -2,6 +2,9 @@ package com.iu.start.bankBook;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,7 +69,7 @@ public class BankBookController {
 		return mv;
 	}
 	
-	//Get
+	//Add
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add() {
 		System.out.println("Add page");
@@ -117,6 +120,75 @@ public class BankBookController {
 		return mv;
 	}
 	
+	
+	//Update	//Get	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("업데이트 GET 실행");
+		
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		
+		System.out.println(bankBookDTO.getBookNum());
+		
+		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		
+		mv.addObject("dto", bankBookDTO);
+		mv.setViewName("bankbook/update");
+
+		
+		ArrayList<BankBookDTO> ar = bankBookDAO.getList();
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public ModelAndView updateInfo(BankBookDTO bankBookDTO) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("업데이트 POST 실행");
+		
+		BankBookDAO bankBookDAO = new BankBookDAO();
+//		BankBookDTO bankBookDTO = new BankBookDTO();
+		
+		int result = bankBookDAO.setUpdate(bankBookDTO);
+
+		if(result==1) {
+			System.out.println("업데이트 성공");
+		}else {
+			System.out.println("실패");
+		}
+		
+		mv.addObject("dto", bankBookDTO);
+		mv.setViewName("redirect:./detail?bookNum="+bankBookDTO.getBookNum());
+		
+		return mv;
+	}
+	
+	
+	//Delete	//Get
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public ModelAndView delete(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("delete GET 실행");
+		BankBookDAO bankBookDAO = new BankBookDAO();
+		
+		int result = bankBookDAO.setDelete(bankBookDTO);
+		
+		if(result==1) {
+			System.out.println("삭제에 성공하였습니다.");
+		}else {
+			System.out.println("삭제에 실패하였습니다.");
+		}
+		
+		mv.addObject("dto", bankBookDTO);
+		mv.setViewName("redirect:./list");
+		
+		return mv;
+	}
 	
 
 }
