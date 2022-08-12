@@ -16,23 +16,25 @@
 <img src="../resources/cat2.jpg">
 <br>
 
-<c:if test="${empty member}">
-<a href="./member/login">Login</a>
-<a href="./member/join">join</a>
+<c:if test="${empty sessionScope.member}">
+<a href="./member/login.iu">Login</a>
+<a href="./member/join.iu">join</a>
 </c:if>
 
-<c:if test="${not empty member}">
-<a href="#">Logout</a>
+<c:if test="${not empty sessionScope.member}">
+<h3>${sessionScope.member.name} 님 환영합니다!</h3>
+<a href="./member/logout.iu">Logout</a>
 <a href="#">Mypage</a>
 </c:if>
 
-<a href="./member/search">search</a>
+<a href="./member/search.iu">search</a>
+<a href="./bankbook/detail.iu">Detail</a>
+<a href="./bankbook/list.iu">List</a>
+<a href="./bankbook/add.iu">Add</a>
+<a href="./bankbook/update.iu">수정하기</a>
+<a href="./bankbook/delete.iu">삭제하기</a>
 
-<a href="./bankbook/detail">Detail</a>
-<a href="./bankbook/list">List</a>
-<a href="./bankbook/add">Add</a>
-<a href="./bankbook/update">수정하기</a>
-<a href="./bankbook/delete">삭제하기</a>
+
 
 
 <br>

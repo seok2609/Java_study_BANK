@@ -9,7 +9,7 @@
 <body>
 	<h1>통장정보 수정하기</h1>
 	
-	<form action="./update" method="post">
+	<form action="./update.iu" method="post">
 					<input type="hidden" name="bookNum" readonly="readonly" value="${dto.bookNum}">
 		<div>
 			통장이름 : <input type="text" name="bookName" value="${dto.bookName}">

@@ -26,25 +26,23 @@
 		</thead>
 	<tbody>
 		<c:forEach items="${requestScope.list}" var="dto">
-			<tr>
+			<%-- <tr>
 				<td>${pageScope.dto.bookName}</td>
 				<td>${pageScope.dto.bookRate}</td>
-			</tr>
-		
-		</c:forEach>
-	
-	
+			</tr> --%>
 		
 			<tr>
-				<td><a href ="./detail?BookNum=${dto.bookNum}">${dto.bookName} </a></td>
-				<td>${dto.bookRate} </td>
+				<td><a href ="./detail.iu?BookNum=${pageScope.dto.bookNum}">${pageScope.dto.bookName} </a></td>
+				<td>${pageScope.dto.bookRate} </td>
 			</tr>
-	
+	</c:forEach>
 	</tbody>
 	</table>
 	
-	<a href="./add">상품등록</a>
-	<a href="./detail">Detail</a>
+	<a href="./add.iu">상품등록</a>
+	<a href="./detail.iu">Detail</a>
+	<a href="./update.iu">수정하기</a>
+	<a href="./delete.iu">삭제하기</a>
 <img src="../resources/cat2.jpg">
 
 </body>

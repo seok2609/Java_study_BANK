@@ -1,6 +1,7 @@
 <%@page import="com.iu.start.bankBook.BankBookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%-- 
 <%
 	//요청이 발생하면 생성, 응답이 나가면 소멸 : RequestScope
@@ -15,22 +16,7 @@
 </head>
 <body>
 	<h1>Detail Page</h1>
-	
-	<!-- 상대경로 -->
-	<!-- <a href="./WEB-INF/view/member/login.jsp">Login</a> -->
-	<a href="../member/login">Login</a>
-	
-	<!-- 절대경로 -->
-	<a href="/member/join">Join</a>
 
-	<a href="./list">리스트보기</a>
-	
-	<a href="./update?bookNum=${dto.bookNum}">수정하기</a>
-	
-	<a href="./delete?bookNum=${dto.bookNum}">삭제하기</a>
-	
-	
-	
 	<table border="1">
 			<tr>
 				<th>BookNum</th>
@@ -46,6 +32,25 @@
 			</tr>
 		</tbody>
 	</table>
+	
+		<!-- 상대경로 -->
+	<!-- <a href="./WEB-INF/view/member/login.jsp">Login</a> -->
+	<a href="../member/login.iu">Login</a>
+	
+	<!-- 절대경로 -->
+	<a href="/member/join.iu">Join</a>
+
+	<a href="./list.iu">리스트보기</a>
+	
+	<a href="./update.iu?bookNum=${dto.bookNum}">수정하기</a>
+	
+	<a href="./delete.iu?bookNum=${dto.bookNum}">삭제하기</a>
+	
+	<c:if test="${not empty sessionScope.member}">
+	
+	<a href="../bankAccount/add.iu?bookNum=${dto.bookNum}">가입하기</a>
+	
+	</c:if>
 	
 <img src="../resources/cat2.jpg">
 </body>

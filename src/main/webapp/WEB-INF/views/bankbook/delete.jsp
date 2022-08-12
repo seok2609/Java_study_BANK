@@ -9,7 +9,7 @@
 <body>
 	<h1>삭제를 원하십니까??</h1>
 	
-	<form action="./delete" method="get">
+	<form action="./delete.iu" method="get">
 			<div>
 				삭제를 원하는 통장번호 : <input type="text" name="bookNum" value="${dto.bookNum}">
 			</div>

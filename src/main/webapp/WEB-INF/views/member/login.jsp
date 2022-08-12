@@ -9,10 +9,10 @@
 <body>
 	<h1>Login Page</h1>
 	
-	<form action="./login" method="post">
+	<form action="./login.iu" method="post">
         <div class="container">
-            ID <input type="text" placeholder="ID입력" name="userName">
-            PW <input type="password" name="passWord">
+            ID <input type="text" value="noze" placeholder="ID입력" name="userName">
+            PW <input type="password" value="1" name="passWord">
         </div>
 
         <div>

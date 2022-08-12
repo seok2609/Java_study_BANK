@@ -10,7 +10,7 @@
 <body>
 	<h1>Add Page</h1>
 	
-	<form action="./add" method="post">
+	<form action="./add.iu" method="post">
 		<div>
 			통장번호(num) : <input type="text" name="bookNum">
 		</div>

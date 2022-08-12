@@ -9,7 +9,7 @@
 <body>
 	<h1>Member Search Form Page</h1>
 	
-	<form action="search" method="post">
+	<form action="./search.iu" method="post">
 		<input type="text" name="search">
 		<input type="submit" value="search">
 		<input type="reset" value="초기화">
@@ -17,6 +17,7 @@
 		<button type="submit">BUTTON</button>
 		<!-- type를 생략하면 submit 이 기본 -->
 	</form>
+	<a href="../">home</a>
 	
 <img src="../resources/cat2.jpg">
 

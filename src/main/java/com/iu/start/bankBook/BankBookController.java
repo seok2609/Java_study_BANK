@@ -23,7 +23,7 @@ public class BankBookController {
 	
 	
 	//Get
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "list.iu", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("list Get 실행");
@@ -53,7 +53,7 @@ public class BankBookController {
 //	}
 	
 	//Get
-	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	@RequestMapping(value = "detail.iu", method = RequestMethod.GET)
 	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
@@ -61,6 +61,7 @@ public class BankBookController {
 //		System.out.println("bookNum : " + bookNum);
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		//System.out.println(bankBookDTO.getBookNum());
 		
 		//return "bankbook/detail";
 		mv.setViewName("bankbook/detail");
@@ -70,7 +71,7 @@ public class BankBookController {
 	}
 	
 	//Add
-	@RequestMapping(value = "add", method = RequestMethod.GET)
+	@RequestMapping(value = "add.iu", method = RequestMethod.GET)
 	public String add() {
 		System.out.println("Add page");
 		
@@ -101,7 +102,7 @@ public class BankBookController {
 //		return "bankbook/add";
 //	}
 	
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@RequestMapping(value = "add.iu", method = RequestMethod.POST)
 	public ModelAndView add(BankBookDTO bankBookDTO) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
@@ -112,7 +113,7 @@ public class BankBookController {
 		
 		BankBookDAO bankBookDAO = new BankBookDAO();
 		
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./list.iu");
 		
 		int result = bankBookDAO.setBankBook(bankBookDTO);
 		System.out.println(result==1);
@@ -122,7 +123,7 @@ public class BankBookController {
 	
 	
 	//Update	//Get	
-	@RequestMapping(value = "update", method = RequestMethod.GET)
+	@RequestMapping(value = "update.iu", method = RequestMethod.GET)
 	public ModelAndView update(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -143,7 +144,7 @@ public class BankBookController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "update.iu", method = RequestMethod.POST)
 	public ModelAndView updateInfo(BankBookDTO bankBookDTO) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
@@ -162,14 +163,14 @@ public class BankBookController {
 		}
 		
 		mv.addObject("dto", bankBookDTO);
-		mv.setViewName("redirect:./detail?bookNum="+bankBookDTO.getBookNum());
+		mv.setViewName("redirect:./detail.iu?bookNum="+bankBookDTO.getBookNum());
 		
 		return mv;
 	}
 	
 	
 	//Delete	//Get
-	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	@RequestMapping(value = "delete.iu", method = RequestMethod.GET)
 	public ModelAndView delete(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -185,7 +186,7 @@ public class BankBookController {
 		}
 		
 		mv.addObject("dto", bankBookDTO);
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./list.iu");
 		
 		return mv;
 	}

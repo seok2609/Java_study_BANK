@@ -134,6 +134,7 @@ public class BankBookDAO implements BookDAO{
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
+//			BankBookDTO bankBookDTO2 = new BankBookDTO();
 			bankBookDTO2 = new BankBookDTO();
 			bankBookDTO2.setBookNum(rs.getLong("BOOKNUM"));
 			bankBookDTO2.setBookName(rs.getString("BOOKNAME"));
