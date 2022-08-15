@@ -24,6 +24,6 @@
 		<button type="submit">수정</button>
 		
 	</form>
-
+<img src="../resources/cat2.jpg">
 </body>
 </html>

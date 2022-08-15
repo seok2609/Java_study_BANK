@@ -34,12 +34,16 @@
 <a href="./bankbook/update.iu">수정하기</a>
 <a href="./bankbook/delete.iu">삭제하기</a>
 
-
-
-
 <br>
 <br>
 <img src ="../resources/cat.jpg">
+
+<p>Board 게시판 입니다!!</p>
+	<a href="./board/list.iu">목록보기</a>
+	<a href="./board/add.iu">추가하기</a>
+	<a href="./board/detail.iu">상세정보</a>
+	<a href="./board/update.iu">수정하기</a>
+	<a href="./board/delete.iu">삭제하기</a>ㄴ
 
 
 </body>
