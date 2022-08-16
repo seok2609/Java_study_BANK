@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class MemberController {
 	
+	
+	@Autowired
+	private BankMembersService bankMembersService;
 	// annotation
 	// @ : 설명 + 실행
 	
@@ -34,9 +38,9 @@ public class MemberController {
 	@RequestMapping(value = "login.iu", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, BankMembersDTO bankMembersDTO, Model model) throws Exception {
 		System.out.println("DB에 로그인 실행");
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+
 		
-		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 		System.out.println(bankMembersDTO);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", bankMembersDTO);
@@ -71,9 +75,7 @@ public class MemberController {
 	@RequestMapping(value = "join.iu", method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO) throws Exception {
 		System.out.println("회원가입 Post 실행");
-		
-		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+	
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		//String username = request.getParameter("username");
@@ -85,7 +87,7 @@ public class MemberController {
 //		bankMembersDTO.setEmail("email");
 //		bankMembersDTO.setPhone("phone");
 		
-		int result = bankMembersDAO.setJoin(bankMembersDTO);
+		int result = bankMembersService.setJoin(bankMembersDTO);
 		System.out.println(result==1);
 		
 		//로그인폼 페이지로 이동
@@ -138,9 +140,9 @@ public class MemberController {
 	@RequestMapping (value = "search.iu", method = RequestMethod.POST)
 	   public ModelAndView getSearchByID(String search)throws Exception {
 	      
-	      BankMembersDAO bankMembersDAO = new BankMembersDAO();
+
 	      ModelAndView mv = new ModelAndView();
-	      ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID(search);
+	      ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
 	      mv.setViewName("member/list");
 	      mv.addObject("list", ar);
 	      
