@@ -23,9 +23,9 @@
 			글 내용 : <input type="text" name="boardContents" value="${dto.boardContents}">
 		</div>
 		<br>
-		<div>
+<%-- 		<div>
 			작성 날짜 : <input type="text" name="boardDate" value="${dto.boardDate}">
-		</div>
+		</div> --%>
 		<br>
 		<div>
 			조회수 : <input type="text" name="boardView" value="${dto.boardView}">

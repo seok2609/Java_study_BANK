@@ -115,14 +115,15 @@ public class BoardDAO implements BoDAO {
 		Connection con = DBConnector.getConnection();
 		
 		//2. Query문 작성
-		String sql = "UPDATE BOARD SET BOARDNAME = ? WHERE  BOARDNUM = ?";
+		String sql = "UPDATE BOARD SET BOARDNAME = ?, BOARDCONTENTS =?  WHERE  BOARDNUM = ?";
 		
 		//3. Query문 미리 전송
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		//4. ?값 있으면 세팅
 		st.setString(1, boardDTO.getBoardName());
-		st.setLong(2, boardDTO.getBoardNum());
+		st.setString(2, boardDTO.getBoardContents());
+		st.setLong(3, boardDTO.getBoardNum());
 		
 		//5. 최종 결과 처리 후 전송
 		int result = st.executeUpdate();
@@ -131,6 +132,7 @@ public class BoardDAO implements BoDAO {
 		
 		while(rs.next()) {
 			boardDTO.setBoardName(rs.getString("BOARDNAME"));
+			boardDTO.setBoardContents(rs.getString("BOARDCONTENTS"));
 			boardDTO.setBoardNum(rs.getLong("BOARDNUM"));
 		}
 		

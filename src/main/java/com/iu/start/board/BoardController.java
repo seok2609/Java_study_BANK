@@ -105,7 +105,7 @@ public class BoardController {
 		System.out.println(result==1);
 		
 		mv.addObject("dto", boardDTO);
-		mv.setViewName("redirect:./list.iu");
+		mv.setViewName("redirect:./list.iu?boardNum="+boardDTO.getBoardNum());
 		
 		
 		if(result == 1) {
