@@ -1,6 +1,7 @@
 package com.iu.start.bankMembers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -139,10 +140,9 @@ public class MemberController {
 	//ModelAndView로 리턴하는법
 	@RequestMapping (value = "search.iu", method = RequestMethod.POST)
 	   public ModelAndView getSearchByID(String search)throws Exception {
-	      
-
 	      ModelAndView mv = new ModelAndView();
-	      ArrayList<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
+	      System.out.println("검색 POST 실행");
+	      List<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
 	      mv.setViewName("member/list");
 	      mv.addObject("list", ar);
 	      

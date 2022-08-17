@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,35 +22,35 @@ public class BankMembersDAO implements MembersDAO {
 	@Override
 	public int setJoin(BankMembersDTO bankMembersDTO) throws Exception {
 		
-		//1. DB연결
-		Connection con = DBConnector.getConnection();
-				
-		//2. Query문 작성
-		String sql = "INSERT INTO BANKMEMBERS "
-					+ "VALUES (?,?,?,?,?)";
+//		//1. DB연결
+//		Connection con = DBConnector.getConnection();
+//				
+//		//2. Query문 작성
+//		String sql = "INSERT INTO BANKMEMBERS "
+//					+ "VALUES (?,?,?,?,?)";
+//		
+//		//3. Query문 미리 전송
+//		PreparedStatement st = con.prepareStatement(sql);
+//				
+//		//4. ?값 처리
+//		st.setString(1, bankMembersDTO.getUserName());
+//		st.setString(2, bankMembersDTO.getPassWord());
+//		st.setString(3, bankMembersDTO.getName());
+//		st.setString(4, bankMembersDTO.getEmail());
+//		st.setString(5, bankMembersDTO.getPhone());
+//				
+//		//5. 최종 전송 후 출력
+//		int result = st.executeUpdate();
+//				
+//		//6. 자원해제
+//		DBConnector.disConnect(st, con);
 		
-		//3. Query문 미리 전송
-		PreparedStatement st = con.prepareStatement(sql);
-				
-		//4. ?값 처리
-		st.setString(1, bankMembersDTO.getUserName());
-		st.setString(2, bankMembersDTO.getPassWord());
-		st.setString(3, bankMembersDTO.getName());
-		st.setString(4, bankMembersDTO.getEmail());
-		st.setString(5, bankMembersDTO.getPhone());
-				
-		//5. 최종 전송 후 출력
-		int result = st.executeUpdate();
-				
-		//6. 자원해제
-		DBConnector.disConnect(st, con);
-		
-		return result;
+		return sqlSession.insert(NAMESPACE+"setJoin",bankMembersDTO);
 	}
 
 	@Override
-	public ArrayList<BankMembersDTO> getSearchByID(String search) throws Exception {
-		ArrayList<BankMembersDTO> ar = new ArrayList<BankMembersDTO>();
+	public List<BankMembersDTO> getSearchByID(String search) throws Exception {
+//		ArrayList<BankMembersDTO> ar = new ArrayList<BankMembersDTO>();
 //		//1. DB 연결
 //		Connection con = DBConnector.getConnection();
 //		
@@ -79,7 +80,7 @@ public class BankMembersDAO implements MembersDAO {
 //		
 //		DBConnector.disConnect(rs, st, con);
 		
-		return sqlSession.selectOne(NAMESPACE+"getSearchByID", search);
+		return sqlSession.selectList(NAMESPACE+"getSearchByID",search);
 	}
 	
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception {

@@ -9,7 +9,11 @@
 	</select>
 	
 	<select id="getSearchByID" parameterType="com.iu.start.bankMembers.BankMembersDTO" resultType="com.iu.start.bankMembers.BankMembersDTO">
-		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE #{userName} ORDER BY USERNAME ASC
+		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' ORDER BY USERNAME ASC
+	</select>
+	
+	<select id="setJoin" parameterType="com.iu.start.bankMembers.BankMembersDTO">
+		INSERT INTO BANKMEMBERS VALUES(#{userName},#{passWord},#{name},#{email},#{phone})
 	</select>
 	
 </mapper>
