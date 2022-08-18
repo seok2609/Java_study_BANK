@@ -1,6 +1,7 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface BookDAO {
 	
@@ -13,7 +14,7 @@ public interface BookDAO {
 	
 	
 	//BankBook에 있는 모든 데이터를 조회  최신순으로 조회 = DESC
-	public ArrayList<BankBookDTO> getList() throws Exception;
+	public List<BankBookDTO> getList() throws Exception;
 	
 	
 	//어느 하나의 row의 Sale컬럼 수정

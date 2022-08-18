@@ -50,6 +50,7 @@
       </tbody>
 
    </table>
+   	<a href="../">홈으로 돌아가기</a>
 <img src="../resources/cat2.jpg">
 
 </body>

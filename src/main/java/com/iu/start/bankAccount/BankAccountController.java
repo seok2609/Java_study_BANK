@@ -2,6 +2,7 @@ package com.iu.start.bankAccount;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,11 +13,10 @@ import com.iu.start.bankMembers.BankMembersDTO;
 @RequestMapping(value = "/bankAccount/*")
 public class BankAccountController {
 	
-	private BankAccountDAO bankAccountDAO;
+	@Autowired
+	private BankAccountService bankAccountService;
 	
-	public BankAccountController() {
-		this.bankAccountDAO = new BankAccountDAO();
-	}
+	
 	
 	@RequestMapping(value = "add.iu", method = RequestMethod.GET)
 	public String add(BankAccountDTO bankAccountDTO, HttpSession session) throws Exception {
@@ -27,7 +27,7 @@ public class BankAccountController {
 		bankAccountDTO.setUserName(bankMembersDTO.getUserName());
 		
 		//DTO : userName, bankNum
-		int result = this.bankAccountDAO.add(bankAccountDTO);		
+		int result = this.bankAccountService.add(bankAccountDTO);		
 		
 		if(result == 1 ) {
 			System.out.println("가입완료!");

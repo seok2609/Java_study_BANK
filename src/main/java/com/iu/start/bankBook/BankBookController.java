@@ -1,6 +1,7 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ public class BankBookController {
 	public String list(Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("list Get 실행");
-		ArrayList<BankBookDTO> ar = bankBookService.getList();
+		List<BankBookDTO> ar = bankBookService.getList();
 		model.addAttribute("list", ar);
 		
 		
@@ -142,7 +143,7 @@ public class BankBookController {
 		mv.setViewName("bankbook/update");
 
 		
-		ArrayList<BankBookDTO> ar = bankBookService.getList();
+		List<BankBookDTO> ar = bankBookService.getList();
 		
 		return mv;
 	}

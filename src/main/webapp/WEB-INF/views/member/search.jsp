@@ -17,7 +17,9 @@
 		<button type="submit">BUTTON</button>
 		<!-- type를 생략하면 submit 이 기본 -->
 	</form>
-	<a href="../">home</a>
+	<a href="../">홈으로 돌아가기</a>
+	
+
 	
 <img src="../resources/cat2.jpg">
 
