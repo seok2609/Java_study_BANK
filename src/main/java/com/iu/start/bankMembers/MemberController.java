@@ -1,7 +1,9 @@
 package com.iu.start.bankMembers;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -148,6 +150,23 @@ public class MemberController {
 	      
 	      return mv;
 	   }
+	
+	
+	@RequestMapping(value = "myPage.iu", method = RequestMethod.GET)
+	public ModelAndView getMyPage(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("마이페이지 GET실행");
+
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+//		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+		mv.setViewName("member/myPage");
+//		mv.addObject("map",map);
+		mv.addObject("dto", bankMembersDTO);
+		return mv;
+	}
+	
 
 
 }

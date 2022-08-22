@@ -10,5 +10,7 @@ public interface MembersDAO {
 	
 	//검색어를 입력해서 ID를 abc 순으로 찾기
 	public List<BankMembersDTO> getSearchByID(String search) throws Exception;
-
+	
+	
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO) throws Exception;
 }
