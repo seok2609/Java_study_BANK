@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+          PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="com.iu.start.bankMembers.BankMembersDAO">
+	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
+		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} and PASSWORD=#{passWord}
+	</select>
+	
+	<select id="getSearchByID" parameterType="String" resultType="com.iu.start.bankMembers.BankMembersDTO">
+		SELECT * FROM BANKMEMBERS WHERE USERNAME LIKE '%'||#{search}||'%' ORDER BY USERNAME ASC
+	</select>
+	
+	<select id="setJoin" parameterType="com.iu.start.bankMembers.BankMembersDTO">
+		INSERT INTO BANKMEMBERS VALUES(#{userName},#{passWord},#{name},#{email},#{phone})
+	</select>
+	
+	<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
+		SELECT USERNAME, NAME, EMAIL, PHONE, ACCOUNTNUM, BOOKNAME, ACCOUNTDATE
+		FROM BANKACCOUNT BA
+		
+		    INNER JOIN 
+		    BANKMEMBERS BM
+		    USING(USERNAME)
+		    
+		    INNER JOIN
+		    
+		    BANKBOOK BB
+		    USING(BOOKNUM)
+		    
+		WHERE USERNAME=#{userName}
+	</select>
+	
+<!-- 	1:N 관계에는 collection 
+		1:1 관계에는 association -->
+	<resultMap type="BankMembersDTO" id="getMyPageResult">
+		<id column="USERNAME" property="userName"/>
+		<result column="NAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PHONE" property="phone"/>
+		<collection property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO">
+			<id column="ACCOUNTNUM" property="accountNum"/>
+			<result column="ACCOUNTDATE" property="accountDate"/>
+			<association property="bankBookDTO" javaType="BankBookDTO">
+				<result column="BOOKNAME" property="bookName"/>
+			</association>
+		</collection>
+	</resultMap>
+	
+</mapper>

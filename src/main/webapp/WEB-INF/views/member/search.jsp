@@ -10,16 +10,18 @@
 	<h1>Member Search Form Page</h1>
 	
 	<form action="./search.iu" method="post">
-		<input type="text" name="search">
-		<input type="submit" value="search">
-		<input type="reset" value="초기화">
-		<input type="submit" value="SUBMIT">
-		<button type="submit">BUTTON</button>
 		<!-- type를 생략하면 submit 이 기본 -->
-	</form>
-	<a href="../">home</a>
+		<input type="text" name="search">
+		<button type="submit" style="background-color: aqua;">검색</button>
+		<input type="reset" style="background-color: red;" value="초기화">
+		
 	
-<img src="../resources/cat2.jpg">
+	</form>
+	<a href="../">홈으로 돌아가기</a>
+	
+
+	
+<img src="../resources/images/cat2.jpg">
 
 </body>
 </html>

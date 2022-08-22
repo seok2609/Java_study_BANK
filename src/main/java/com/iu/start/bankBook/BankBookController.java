@@ -1,10 +1,12 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +23,16 @@ public class BankBookController {
 	
 	// /bankbook/detail 	Get detail
 	
+	@Autowired
+	private BankBookService bankBookService;
+	
 	
 	//Get
 	@RequestMapping(value = "list.iu", method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("list Get 실행");
-		BankBookDAO bankBookDAO = new BankBookDAO();
-		ArrayList<BankBookDTO> ar = bankBookDAO.getList();
+		List<BankBookDTO> ar = bankBookService.getList();
 		model.addAttribute("list", ar);
 		
 		
@@ -59,8 +63,8 @@ public class BankBookController {
 
 		System.out.println("detail Get 실행");
 //		System.out.println("bookNum : " + bookNum);
-		BankBookDAO bankBookDAO = new BankBookDAO();
-		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+
+		bankBookDTO = bankBookService.getDetail(bankBookDTO);
 		//System.out.println(bankBookDTO.getBookNum());
 		
 		//return "bankbook/detail";
@@ -111,11 +115,11 @@ public class BankBookController {
 		System.out.println(bankBookDTO.getBookName());
 		System.out.println(bankBookDTO.getBookRate());
 		
-		BankBookDAO bankBookDAO = new BankBookDAO();
+
 		
 		mv.setViewName("redirect:./list.iu");
 		
-		int result = bankBookDAO.setBankBook(bankBookDTO);
+		int result = bankBookService.setBankBook(bankBookDTO);
 		System.out.println(result==1);
 		
 		return mv;
@@ -129,17 +133,17 @@ public class BankBookController {
 		
 		System.out.println("업데이트 GET 실행");
 		
-		BankBookDAO bankBookDAO = new BankBookDAO();
+
 		
 		System.out.println(bankBookDTO.getBookNum());
 		
-		bankBookDTO = bankBookDAO.getDetail(bankBookDTO);
+		bankBookDTO = bankBookService.getDetail(bankBookDTO);
 		
 		mv.addObject("dto", bankBookDTO);
 		mv.setViewName("bankbook/update");
 
 		
-		ArrayList<BankBookDTO> ar = bankBookDAO.getList();
+		List<BankBookDTO> ar = bankBookService.getList();
 		
 		return mv;
 	}
@@ -151,10 +155,10 @@ public class BankBookController {
 		
 		System.out.println("업데이트 POST 실행");
 		
-		BankBookDAO bankBookDAO = new BankBookDAO();
+
 //		BankBookDTO bankBookDTO = new BankBookDTO();
 		
-		int result = bankBookDAO.setUpdate(bankBookDTO);
+		int result = bankBookService.setUpdate(bankBookDTO);
 
 		if(result==1) {
 			System.out.println("업데이트 성공");
@@ -175,9 +179,9 @@ public class BankBookController {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("delete GET 실행");
-		BankBookDAO bankBookDAO = new BankBookDAO();
+
 		
-		int result = bankBookDAO.setDelete(bankBookDTO);
+		int result = bankBookService.setDelete(bankBookDTO);
 		
 		if(result==1) {
 			System.out.println("삭제에 성공하였습니다.");

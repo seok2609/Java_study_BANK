@@ -1,10 +1,14 @@
 package com.iu.start.bankMembers;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class MemberController {
 	
+	
+	@Autowired
+	private BankMembersService bankMembersService;
 	// annotation
 	// @ : 설명 + 실행
 	
@@ -34,9 +41,9 @@ public class MemberController {
 	@RequestMapping(value = "login.iu", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, BankMembersDTO bankMembersDTO, Model model) throws Exception {
 		System.out.println("DB에 로그인 실행");
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+
 		
-		bankMembersDTO = bankMembersDAO.getLogin(bankMembersDTO);
+		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 		System.out.println(bankMembersDTO);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", bankMembersDTO);
@@ -71,9 +78,7 @@ public class MemberController {
 	@RequestMapping(value = "join.iu", method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO) throws Exception {
 		System.out.println("회원가입 Post 실행");
-		
-		
-		BankMembersDAO bankMembersDAO = new BankMembersDAO();
+	
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		//String username = request.getParameter("username");
@@ -85,7 +90,7 @@ public class MemberController {
 //		bankMembersDTO.setEmail("email");
 //		bankMembersDTO.setPhone("phone");
 		
-		int result = bankMembersDAO.setJoin(bankMembersDTO);
+		int result = bankMembersService.setJoin(bankMembersDTO);
 		System.out.println(result==1);
 		
 		//로그인폼 페이지로 이동
@@ -137,15 +142,31 @@ public class MemberController {
 	//ModelAndView로 리턴하는법
 	@RequestMapping (value = "search.iu", method = RequestMethod.POST)
 	   public ModelAndView getSearchByID(String search)throws Exception {
-	      
-	      BankMembersDAO bankMembersDAO = new BankMembersDAO();
 	      ModelAndView mv = new ModelAndView();
-	      ArrayList<BankMembersDTO> ar = bankMembersDAO.getSearchByID(search);
+	      System.out.println("검색 POST 실행");
+	      List<BankMembersDTO> ar = bankMembersService.getSearchByID(search);
 	      mv.setViewName("member/list");
 	      mv.addObject("list", ar);
 	      
 	      return mv;
 	   }
+	
+	
+	@RequestMapping(value = "myPage.iu", method = RequestMethod.GET)
+	public ModelAndView getMyPage(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("마이페이지 GET실행");
+
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+//		Map<String, Object> map = bankMembersService.getMyPage(bankMembersDTO);
+		bankMembersDTO = bankMembersService.getMyPage(bankMembersDTO);
+		
+		mv.setViewName("member/myPage");
+//		mv.addObject("map",map);
+		mv.addObject("dto", bankMembersDTO);
+		return mv;
+	}
+	
 
 
 }
