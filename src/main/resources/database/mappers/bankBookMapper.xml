@@ -5,7 +5,7 @@
           
 <mapper namespace="com.iu.start.bankBook.BankBookDAO">
 	<insert id="setBankBook" parameterType="com.iu.start.bankBook.BankBookDTO">
-		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate},1)
+		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate}, 1,  #{bookContents})
 	</insert>
 	
 	<update id="setUpdate" parameterType="com.iu.start.bankBook.BankBookDTO">

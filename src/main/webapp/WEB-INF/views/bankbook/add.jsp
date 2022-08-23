@@ -23,6 +23,9 @@
 		<div>
 			판매여부(sale) : <input type="text" name="bookSale">
 		</div>
+		<div>
+			글내용(contents) : <input type="text" name="bookContents">
+		</div>
 		
 		<div>
 			<input type="submit" value="Create">

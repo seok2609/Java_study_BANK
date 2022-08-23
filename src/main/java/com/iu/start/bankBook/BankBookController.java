@@ -122,6 +122,12 @@ public class BankBookController {
 		int result = bankBookService.setBankBook(bankBookDTO);
 		System.out.println(result==1);
 		
+		if(result==1) {
+			System.out.println("추가 성공!!");
+		}else {
+			System.out.println("추가 실패!!");
+		}
+		
 		return mv;
 	}
 	
