@@ -49,6 +49,27 @@
 	
 	
 	<a href="./add.iu">글 작성</a>		
+	
+	<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
+    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+    	    <li class="page-item"><a class="page-link" href="./list.iu?page=${i}">${i}</a></li>
+    </c:forEach>
+
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 	<a href="./detail.iu">글 조회</a>	
 	<a href="./update.iu">글 수정</a>
 	<a href="./delete.iu">글 삭제</a>
