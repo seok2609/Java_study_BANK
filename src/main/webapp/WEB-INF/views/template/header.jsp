@@ -13,6 +13,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <a class="nav-link active" href="/bankbook/list.iu">상품리스트</a>
                     <a class="nav-link active" href="/notice/list.iu">게시판</a>
+                     <a class="nav-link active" href="/qna/reply.iu">Q&A</a>
                      <a class="nav-link active" href="/member/search.iu">회원검색</a>
                     
                     <c:choose>

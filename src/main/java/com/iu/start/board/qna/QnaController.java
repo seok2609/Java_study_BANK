@@ -27,7 +27,7 @@ public class QnaController {
 			List<BoardDTO> ar = qnaService.getList();
 			
 			mv.addObject("list", ar);
-			mv.setViewName("qna/list");
+			mv.setViewName("board/list");
 			
 			return mv;
 		}

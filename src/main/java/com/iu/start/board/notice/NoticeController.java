@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.board.impl.BoardDTO;
@@ -20,14 +21,17 @@ public class NoticeController {
 	
 	//글목록
 	@RequestMapping(value = "list.iu", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
+	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("글목록 GET 실행");
 		
-		List<BoardDTO> ar = noticeService.getList();
+		System.out.println("Page : "+ page);
+		
+		List<BoardDTO> ar = noticeService.getList(page);
 		
 		mv.addObject("list", ar);
-		mv.setViewName("notice/list");
+		mv.addObject("board", "Notice");
+		mv.setViewName("board/list");
 		
 		return mv;
 	}
@@ -47,7 +51,7 @@ public class NoticeController {
 	@RequestMapping(value = "add.iu", method = RequestMethod.GET)
 	public String setAdd() throws Exception{
 		
-		return "notice/add";
+		return "board/add";
 	}
 	
 	@RequestMapping(value = "add.iu", method = RequestMethod.POST)
@@ -55,6 +59,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setAdd(boardDTO);
 		
+
 		mv.setViewName("redirect:./list.iu");
 		
 		if(result == 1) {

@@ -13,7 +13,7 @@
 	
 	<section class="container-fluid col-lg-4 mt-5">
 	
-	<h1>리스트</h1>
+	<h1>${board}</h1>
 	<table border="1" class="table table-bordered border-danger" style="background-color: darksalmon">
 				<thead class="table-dark">
 					<tr>

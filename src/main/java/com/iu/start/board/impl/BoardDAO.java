@@ -1,11 +1,12 @@
 package com.iu.start.board.impl;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoardDAO {
 	
 	//글목록
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(Map<String, Long> map) throws Exception;
 
 	
 	//글상세보기
@@ -22,6 +23,9 @@ public interface BoardDAO {
 	
 	//글삭제
 	public int setDelete(BoardDTO boardDTO) throws Exception;
+	
+	//글의 총 갯수 가져오기
+	public Long getCount() throws Exception;
 	
 	
 }
