@@ -32,7 +32,7 @@
 			</div>
 			
 			<div class="mb-3">
-				<button class="btn btn-success">WRITE</button>
+				<button class="btn btn-success">글쓰기 완료</button>
 			</div>
 			
 		</form>
