@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,11 @@ public class NoticeController {
 	@Autowired 
 	private NoticeService noticeService;
 	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Notice";
+	}
+	
 	//글목록
 	@RequestMapping(value = "list.iu", method = RequestMethod.GET)
 	public ModelAndView getList(Pager pager) throws Exception{
@@ -27,13 +33,16 @@ public class NoticeController {
 		System.out.println("글목록 GET 실행");
 		System.out.println(pager.getPage());
 		
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
+		
 //		System.out.println("Page : "+ page);
 //		
 		List<BoardDTO> ar = noticeService.getList(pager);
 		
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
-		mv.addObject("board", "Notice");
+//		mv.addObject("board", "Notice");
 		mv.setViewName("board/list");
 		
 		return mv;
@@ -46,7 +55,7 @@ public class NoticeController {
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
 		
-		return "notice/detail";
+		return "board/detail";
 	}
 	
 	
@@ -81,7 +90,7 @@ public class NoticeController {
 		boardDTO = noticeService.getDetail(boardDTO);
 		
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("notice/update");
+		mv.setViewName("board/update");
 		
 		return mv;
 		

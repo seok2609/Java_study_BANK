@@ -44,14 +44,14 @@ public class NoticeTest extends MyAbstractTest{
 //		System.out.println("finish!");
 //	}
 	
-	@Test
-	public void getCountTest() throws Exception{
-		
-		long count = noticeDAO.getCount();
-		assertEquals(103L, count);
-		
-
-	}
+//	@Test
+//	public void getCountTest() throws Exception{
+//		
+//		long count = noticeDAO.getCount();
+//		assertEquals(103L, count);
+//		
+//
+//	}
 
 
 }

@@ -13,7 +13,33 @@
 	
 	<section class="container-fluid col-lg-4 mt-5">
 	
-	<h1>${board}</h1>
+	<h1>${board} List Page</h1>
+	
+	<form action="./list.iu" class="row row-cols-lg-auto g-3 align-items-center">
+	
+	  <div class="col-12">
+	    <label class="visually-hidden" for="kind">Kind</label>
+	    <select name="kind" class="form-select" id="kind">
+	      <option selected>선택하세요</option>
+	      <option value="contents">Contents</option>
+	      <option value="title">Title</option>
+	      <option value="writer">Writer</option>
+	    </select>
+	  </div>
+	  
+	  <div class="col-12">
+	    <label class="visually-hidden" for="search">검색어</label>
+	    <div class="input-group">
+	      <input type="text" name="search" class="form-control" id="search">
+	  	</div>
+	  </div>
+	 
+  
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">검색</button>
+  </div>
+</form>
 	<table border="1" class="table table-striped table-hover">
 				<thead class="table-dark">
 					<tr>
@@ -29,8 +55,12 @@
 				<c:forEach items="${requestScope.list}" var="dto">
 				
 					<tr>
-						<td><a href ="./detail.iu?num=${pageScope.dto.num}">${pageScope.dto.num} </a></td>
-						<td>${pageScope.dto.title}</td>
+						<td>${pageScope.dto.num} </td>
+						<td>
+						<c:catch>
+           				 <c:forEach begin="1" end="${dto.depth}" >--</c:forEach>
+           				 </c:catch>
+						<a href ="./detail.iu?num=${pageScope.dto.num}">${pageScope.dto.title}</a></td>
 						<td>${pageScope.dto.writer}</td>
 						<td>${pageScope.dto.contents}</td>
 						<td>${pageScope.dto.regDate}</td>
@@ -42,26 +72,20 @@
 			<div>
 			<button onclick="location='add.iu'" class="btn btn-primary">글쓰기</button>
 			</div>
-	
-	
-	
-	
-	
-	
-	<a href="./add.iu">글 작성</a>		
-	
+			<br>
+
 	<nav aria-label="Page navigation example">
   <ul class="pagination">
   	<c:if test="${pager.pre}">
 	    <li class="page-item">
-	      <a class="page-link" href="./list.iu?page=${pager.startNum-1}" aria-label="Previous">
+	      <a class="page-link" href="./list.iu?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
     </c:if>
     
     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-    	    <li class="page-item"><a class="page-link" href="./list.iu?page=${i}">${i}</a></li>
+    	    <li class="page-item"><a class="page-link" href="./list.iu?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
     </c:forEach>
 
 <%-- 	<c:choose>
@@ -73,16 +97,13 @@
 		</c:otherwise>
 	</c:choose> --%>
 	<li class="page-item ${pager.next?'':'disabled'}">
-      <a class="page-link" href="./list.iu?page=${pager.lastNum+1}" aria-label="Next">
+      <a class="page-link" href="./list.iu?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
 </nav>
 
-	<a href="./detail.iu">글 조회</a>	
-	<a href="./update.iu">글 수정</a>
-	<a href="./delete.iu">글 삭제</a>
 </section>
 
 <c:import url="../template/footer.jsp"></c:import>
