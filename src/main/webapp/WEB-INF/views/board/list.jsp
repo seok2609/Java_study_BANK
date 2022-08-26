@@ -60,7 +60,7 @@
 						<c:catch>
            				 <c:forEach begin="1" end="${dto.depth}" >--</c:forEach>
            				 </c:catch>
-						<a href ="./detail.iu?num=${pageScope.dto.num}">${pageScope.dto.title}</a></td>
+						<a href ="./detail.iu?=${pageScope.dto.num}">${pageScope.dto.title}</a></td>
 						<td>${pageScope.dto.writer}</td>
 						<td>${pageScope.dto.contents}</td>
 						<td>${pageScope.dto.regDate}</td>
