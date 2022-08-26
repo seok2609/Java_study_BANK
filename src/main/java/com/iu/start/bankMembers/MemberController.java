@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller 
@@ -76,9 +77,12 @@ public class MemberController {
 	
 	//Post
 	@RequestMapping(value = "join.iu", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception {
 		System.out.println("회원가입 Post 실행");
-	
+		System.out.println(photo);
+		System.out.println("upload 파일명 : " + photo.getOriginalFilename());
+		System.out.println("upload 파라미터명 : " + photo.getName());
+		System.out.println("upload 파일크기 : " + photo.getSize());
 //		BankMembersDTO bankMembersDTO = new BankMembersDTO();
 		
 		//String username = request.getParameter("username");
@@ -90,8 +94,8 @@ public class MemberController {
 //		bankMembersDTO.setEmail("email");
 //		bankMembersDTO.setPhone("phone");
 		
-		int result = bankMembersService.setJoin(bankMembersDTO);
-		System.out.println(result==1);
+		int result = bankMembersService.setJoin(bankMembersDTO, photo);
+//		System.out.println(result==1);
 		
 		//로그인폼 페이지로 이동
 		//redirect

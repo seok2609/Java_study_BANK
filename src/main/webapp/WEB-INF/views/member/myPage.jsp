@@ -31,6 +31,12 @@
 				
 		</c:forEach>
 	</div>
+	
+	<div class="row">
+		<img alt="" src="../resources/upload/member/${dto.bankMembersFileDTO.fileName}">
+	</div>
+	
+	
 	<br>
 	<br>	
 	<br>
@@ -40,6 +46,9 @@
 	<br>
 	<br>
 	<img src="../resources/images/page.gif">
+	
+	
+	
 	</section>
 	
 	<c:import url="../template/footer.jsp"></c:import>

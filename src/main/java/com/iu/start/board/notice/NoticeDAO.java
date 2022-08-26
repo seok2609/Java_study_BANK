@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.start.board.impl.BoardDAO;
 import com.iu.start.board.impl.BoardDTO;
@@ -28,12 +29,12 @@ public class NoticeDAO implements BoardDAO{
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		
-		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
+		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO); //boardDTO를 mapper로 던져준다
 	}
 	
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		
 		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
 	}

@@ -1,11 +1,17 @@
 package com.iu.start.board.notice;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.start.board.impl.BoardDTO;
 import com.iu.start.board.impl.BoardService;
@@ -17,6 +23,8 @@ public class NoticeService implements BoardService{
 	
 		@Autowired 
 		private NoticeDAO noticeDAO;
+		@Autowired
+		private ServletContext servletContext;
 	
 
 	@Override
@@ -124,9 +132,51 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		
-		return noticeDAO.setAdd(boardDTO);
+		//저장할 폴더의 실제 경로 반환
+		String realPath = servletContext.getRealPath("resources/upload/notice");
+		System.out.println("RealPath : " + realPath);
+		
+		//저장할 폴더의 정보를 가지는 자바 객체 생성
+		File file = new File(realPath);
+		
+		//file 첨부를 안할때 구분
+		
+		if(!file.exists()) {
+				file.mkdirs();
+		}
+		
+		for(MultipartFile mf: files) {
+			if(mf.isEmpty()) {
+				continue;
+			}
+			
+			//저장하는 코드
+			
+			//jpg 경로 리셋
+			file = new File(realPath);
+		
+		//중복되지 않는 파일명 생성
+		String fileName = UUID.randomUUID().toString();
+		System.out.println("fileName : " + fileName);
+		
+		Calendar ca = Calendar.getInstance();
+		Long time = ca.getTimeInMillis();
+		
+		//확장자 붙히기
+		fileName = fileName+"_"+mf.getOriginalFilename();
+		System.out.println("fileName : " + fileName);
+		
+		//HDD에 파일저장
+		//어느 폴더에 어떤 이름을 저장할 file 객체 생성
+		file = new File(file, fileName);
+		
+		mf.transferTo(file); //리턴타입 void이기 때문에 저장후 아무것도 안함
+
+		}
+//		return noticeDAO.setAdd(boardDTO);1
+			return 0;
 	}
 
 	@Override

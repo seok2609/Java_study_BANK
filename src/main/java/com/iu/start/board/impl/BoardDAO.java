@@ -3,6 +3,8 @@ package com.iu.start.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.iu.start.util.Pager;
 
 public interface BoardDAO {
@@ -16,7 +18,7 @@ public interface BoardDAO {
 	
 	
 	//글쓰기
-	public int setAdd(BoardDTO boardDTO) throws Exception;
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception;
 	
 	
 	//글수정

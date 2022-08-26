@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="getDetail" parameterType="BoardDTO" resultType="NoticeDTO">
-		SELECT * FROM NOTICE WHERE TITLE = #{title}
+		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 	
 	<insert id="setAdd" parameterType="BoardDTO">
