@@ -2,6 +2,8 @@ package com.iu.start.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +26,7 @@ public class NoticeController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Notice";
+		return "notice";
 	}
 	
 	//글목록
@@ -32,7 +34,7 @@ public class NoticeController {
 	public ModelAndView getList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("글목록 GET 실행");
-		System.out.println(pager.getPage());
+		System.out.println(pager);
 		
 		System.out.println(pager.getKind());
 		System.out.println(pager.getSearch());
@@ -68,9 +70,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "add.iu", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO, files);
+		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
 		
 
 		mv.setViewName("redirect:./list.iu");

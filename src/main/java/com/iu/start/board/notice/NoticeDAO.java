@@ -3,6 +3,8 @@ package com.iu.start.board.notice;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.start.board.impl.BoardDAO;
 import com.iu.start.board.impl.BoardDTO;
+import com.iu.start.board.impl.BoardFileDTO;
 import com.iu.start.util.Pager;
 
 @Repository
@@ -34,7 +37,7 @@ public class NoticeDAO implements BoardDAO{
 	
 
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO) throws Exception {
 		
 		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
 	}
@@ -56,6 +59,13 @@ public class NoticeDAO implements BoardDAO{
 	public Long getCount(Pager pager) throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
+	}
+
+
+	@Override
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception {
+	
+		return sqlSession.insert(NAMESPACE+"setAddFIle" ,boardFileDTO);
 	}
 	
 	

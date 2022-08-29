@@ -3,6 +3,8 @@ package com.iu.start.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.start.util.Pager;
@@ -18,7 +20,7 @@ public interface BoardDAO {
 	
 	
 	//글쓰기
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception;
+	public int setAdd(BoardDTO boardDTO) throws Exception;
 	
 	
 	//글수정
@@ -30,6 +32,9 @@ public interface BoardDAO {
 	
 	//글의 총 갯수 가져오기
 	public Long getCount(Pager pager) throws Exception;
+	
+	//파일추가
+	public int setAddFile(BoardFileDTO boardFileDTO) throws Exception;
 	
 	
 }
