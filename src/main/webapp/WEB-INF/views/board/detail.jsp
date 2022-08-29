@@ -26,7 +26,7 @@
 				${boardDTO.regDate}
 			</div>
 			<div class="col-lg-2 border border-danger">
-					${boardDTO.hit}
+				${boardDTO.hit}
 			</div>
 		</div>
 		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >

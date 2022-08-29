@@ -146,7 +146,7 @@ public class NoticeService implements BoardService{
 			}
 			String fileName = fileManager.saveFile(servletContext, path, multipartFile);
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
-			boardFileDTO.setFileName(path);
+			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
 			boardFileDTO.setNum(boardDTO.getNum());
 			noticeDAO.setAddFile(boardFileDTO);
