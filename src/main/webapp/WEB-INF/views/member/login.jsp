@@ -14,18 +14,18 @@
 	  
 	<section class="container-fluid col-lg-4 mt-5">
 	
-		  <form action="./login.iu" method="post">
+		  <form action="./login.iu" method="post" id="form1">
 		  
 			  <div class="mb-3">
-			    <label for="exampleInputEmail1" class="form-label">ID</label>
-			    <input type="text" name="userName" value="noze" class="form-control" id="exampleInputEmail1"aria-describedby="emailHelp" >
+			    <label for="userName" class="form-label">ID</label>
+			    <input type="text" name="userName" value="noze" class="form-control" id="userName"aria-describedby="emailHelp" >
 			    <div id="emailHelp" class="form-text">아이디를 입력하세요</div>
 			  </div>
 			  
 			  
 			  <div class="mb-3">
-			    <label for="exampleInputPassword1" class="form-label">Password</label>
-			    <input type="password" name="passWord" value="1" class="form-control" id="exampleInputPassword1">
+			    <label for="password" class="form-label">Password</label>
+			    <input type="password" name="passWord" value="1" class="form-control" id="password">
 			  </div>
 			  
 			  
@@ -33,9 +33,10 @@
 			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
 			    <label class="form-check-label" for="exampleCheck1">Check me out</label>
 			  </div>
+			  <h4 id="d1">되겠냐?</h4>
 			  
 			  
-			  	<button type="submit" class="btn btn-primary">로그인</button>
+			  	<button type="button" class="btn btn-primary" id="btn">로그인</button>
 			</form>
 	</section>
 	  
@@ -53,5 +54,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
+	<script src="/resources/JS/member.js"></script>
 </body>
 </html>
