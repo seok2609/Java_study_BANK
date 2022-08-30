@@ -21,16 +21,16 @@
 	    <label class="visually-hidden" for="kind">Kind</label>
 	    <select name="kind" class="form-select" id="kind">
 	      <option selected>선택하세요</option>
-	      <option value="contents">Contents</option>
-	      <option value="title">Title</option>
-	      <option value="writer">Writer</option>
+	      <option class="kinds" value="contents">Contents</option>
+	      <option class="kinds" value="title">Title</option>
+	      <option class="kinds" value="writer">Writer</option>
 	    </select>
 	  </div>
 	  
 	  <div class="col-12">
 	    <label class="visually-hidden" for="search">검색어</label>
 	    <div class="input-group">
-	      <input type="text" name="search" class="form-control" id="search">
+	      <input type="text" name="search" value="${param.search}" class="form-control" id="search">
 	  	</div>
 	  </div>
 	 
@@ -111,5 +111,21 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
+	<script src="/resources/JS/board.js"></script>
+	<script>
+		const kinds = document.getElementsByClassName("kinds");
+		let k = '${param.kind}';	//title,contents,writer
+		let p = '${param.kinds}';
+	
+		console.log(k);
+		console.log(p);
+
+		for(let i=0;i<kinds.length;i++){
+			if(kinds[i].value == k){
+				kinds[i].selected = true;
+				break;
+			}
+		}
+	</script>
 </body>
 </html>

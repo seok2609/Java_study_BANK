@@ -28,10 +28,10 @@
 				</tr>
 			</thead>
 			<tbody>
-<%-- 		<c:forEach begin="0" end="10" var="i" step="1">
+<!-- <%-- 		<c:forEach begin="0" end="10" var="i" step="1">
 		for(int i=0;i<=10;i=i+1)
 			<h3>${pageScope.i}</h3>
-		</c:forEach> --%>
+		</c:forEach> --%> -->
 		
 		<c:forEach items="${requestScope.list}" var="dto">
 			<tr>
@@ -43,7 +43,7 @@
 		
 		</c:forEach>
 		
-<%-- 			<%
+<!-- <%-- 			<%
          for (BankMembersDTO bDto : ar) {%>
          <tr>
             <td><%=bDto.getUserName()%></td>
@@ -51,7 +51,7 @@
             <td><%=bDto.getEmail()%></td>
             <td><%=bDto.getPhone()%></td>
          </tr>
-         <% } %> --%>
+         <% } %> --%> -->
       </tbody>
 
    		</table>
@@ -64,5 +64,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
+
+
 </body>
 </html>
