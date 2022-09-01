@@ -12,6 +12,10 @@
       width: 600px;
       height: 100px;
     }
+    #po{
+      font-size: 10pt;
+      color: black;
+    }
     
     
   </style>

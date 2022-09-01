@@ -2,6 +2,8 @@
 const fileAdd = document.getElementById("fileAdd"); //add button
 const addFiles = document.getElementById("addFiles"); // div#addFiles
 
+
+let idx = 0;
 let count = 0;
 
 fileAdd.addEventListener("click", function(){
@@ -16,6 +18,7 @@ fileAdd.addEventListener("click", function(){
     //  <div class="mb-3">
     //     <label for="file" class="form-label">File</label>
     //     <input type="file" name="files" class="form-control" id="file">
+    //     <button type="button" class="del">삭제</button>
     //   </div>
 
 
@@ -24,6 +27,9 @@ fileAdd.addEventListener("click", function(){
     let c = document.createAttribute("class"); //class=""
     c.value = "mb-3";                           //class="mb-3"
     div.setAttributeNode(c);                    //<div class="mb-3" </div>
+    c = document.createAttribute("id");
+    c.value="file"+idx;
+    div.setAttributeNode(c);
 
 
     //자식 Element Label 생성
@@ -60,7 +66,35 @@ fileAdd.addEventListener("click", function(){
     div.appendChild(input);
 
 
-    addFiles.append(div);
+    //자식 Element button 생성
+    let button = document.createElement("button");      //<button>
+    let buttonContents = document.createTextNode("삭제"); //"삭제"
+    button.appendChild(buttonContents);                 //<button>삭제</button>
+    let buttonAttr = document.createAttribute("type");  //type=""
+    buttonAttr.value="button";                          //type="button"
+    button.setAttributeNode(buttonAttr);                //<button type = "button"
 
+    buttonAttr = document.createAttribute("class");     //class=""
+    buttonAttr.value = "btn btn-danger del";                           //class="del"
+    button.setAttributeNode(buttonAttr);                    //<button type="button" class="del"
+
+    buttonAttr = document.createAttribute("title");
+    buttonAttr.value=idx;
+    button.setAttributeNode(buttonAttr);
+
+    div.appendChild(button);
+
+    
+    addFiles.append(div);
+    
     count ++;
+    idx++;
+});
+
+//Element button 삭제이벤트 만들기
+addFiles.addEventListener("click", function(event){
+    if(event.target.classList[0]=='del'){
+        alert("사아아악제에에");
+        console.log(event);
+    }
 });

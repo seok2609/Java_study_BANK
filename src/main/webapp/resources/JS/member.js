@@ -34,7 +34,33 @@ function logincheck(){
         const frm = document.getElementById("frm");
     
     
+   
     
+        all.addEventListener("click", function(){
+        
+            
+                for(let i=0;i<cb.length;i++){
+                    cb[i].checked = all.checked;
+                }
+            });
+    
+        for(let i=0;i<cb.length;i++){
+            
+            cb[i].addEventListener("click", function(){
+                let result = true;
+                for(let j=0;j<cb.length;j++){
+                    if(!cb[j].checked){
+                        result = false;
+                        break;
+                    }else{
+                        result = true;
+                        break;
+                    }
+                }
+                    all.checked=result;
+            });
+        }
+         
         join.addEventListener("click", function(){
     
             let result =true;
@@ -51,30 +77,8 @@ function logincheck(){
                 alert("필수 약관동의하삼")
             }
                 
-        })
+        });
     
-    
-        all.addEventListener("click", function(){
-        
-            
-                for(let i=0;i<cb.length;i++){
-                    cb[i].checked=all.checked;
-                }
-            })
-    
-        for(let i=0;i<i.length;i++){
-            
-            cb[i].addEventListener("click", function(){
-                let result =true;
-                for(let j=0;j<cb.length;j++){
-                    if(!cb[j].checked){
-                        result = false;
-                        break;
-                    }
-                }
-                    all.checked=result;
-            });
-        }
     
     
     

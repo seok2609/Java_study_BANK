@@ -2,8 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<style>
+		.col{
+			color:red;
+		}
+	</style>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -25,18 +30,30 @@
 			    <label for="inputUserName" class="col-sm-2 col-form-label">아이디</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="userName" class="form-control" id="inputUserName" placeholder="ID 입력">
+				  <div id="d1" class="col"></div>
+				</div>
 			    </div>
 			  </div>
 			  <div class="row mb-3">
 			    <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 			    <div class="col-sm-10">
 			      <input type="password" name="passWord" class="form-control" id="inputPassword" placeholder="Password 입력">
-			    </div>
+				  <div id="d2" class="col"></div>
+				</div>
 			  </div>
+			  </div>
+			  <div class="row mb-3">
+			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+			    <div class="col-sm-10">
+			      <input type="password" name="passWord2" class="form-control" id="inputPassword2" placeholder="Password 입력">
+			    <div id="d3" class="col"></div>
+			    </div>
 			  <div class="row mb-3">
 			    <label for="inputName" class="col-sm-2 col-form-label">이름</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="name" class="form-control" id="inputName" placeholder="이름 입력">
+				  <div id="d4" class="col"></div>
+				</div>
 			    </div>
 			  </div>
 			  
@@ -44,12 +61,16 @@
 			    <label for="inputEmail" class="col-sm-2 col-form-label">이메일</label>
 			    <div class="col-sm-10">
 			      <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email 입력">
+				  <div id="d5" class="col"></div>
+				</div>
 			    </div>
 			  </div>
 			  <div class="row mb-3">
 			    <label for="inputPhone" class="col-sm-2 col-form-label">전화번호</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="전화번호 입력">
+				  <div id="d6" class="col"></div>
+				</div>
 			    </div>
 			  </div>
 			  <!-- name=""과 같은 이름으로 컨트롤러 변수이름 -->
