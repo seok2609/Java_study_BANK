@@ -55,10 +55,10 @@
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
 	<script src="/resources/JS/member.js"></script>
-</body>
-
   <script src="/resources/Js/member.js"></script>
   <script>
     logincheck();
   </script>
+</body>
+
 </html>

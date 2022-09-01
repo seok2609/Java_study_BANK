@@ -12,7 +12,10 @@
       width: 600px;
       height: 100px;
     }
+    
+    
   </style>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
 <body>
 
@@ -50,16 +53,16 @@
   약관(선택)<input type="checkbox" class="cb" >
 </div>
 
-<form id="frm" action="./join">
+<form id="frm" action="./join.iu">
   <button type="button" id="join">회원가입</button>
 
 </form>
 </div>
 </section>
-</body>
-  <script src="/resources/js/member.js"></script>
+  <script src="/resources/JS/member.js"></script>
   <script>
     check();
-  </script>
+    </script>
     <c:import url="../template/footer.jsp"></c:import>
+</body>
 </html>

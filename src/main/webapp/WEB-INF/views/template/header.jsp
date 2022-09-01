@@ -26,7 +26,7 @@
                           <a class="nav-link active" href="/member/login.iu">로그인</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link active" href="/member/agree.iu">회원가입</a>
+                          <a class="nav-link active" href="/member/agree.iu">회원가입</a>	
                       </li>
                       
                    </c:when>

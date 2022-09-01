@@ -62,7 +62,7 @@
 				
 			  <div class="row justify-content-end">
 			  	<div >
-			  		<button type="submit" class="btn btn-primary mb-3">회원가입</button>
+			  		<button type="submit" id="btn" class="btn btn-primary mb-3">회원가입</button>
 			  	</div>
 			  </div>
 			  
@@ -73,10 +73,10 @@
     </div>
 	<c:import url="../template/footer.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>    
-</body>
-
-<script src="/resources/js/member.js"></script>
+<script src="/resources/JS/member.js"></script>
 <script>
 	checkjoin();
 </script>
+</body>
+
 </html>

@@ -34,7 +34,7 @@ public class MemberController {
 	@GetMapping("agree.iu")
 	public String getAgree() throws Exception {
 
-		return "member/agree.iu";
+		return "member/agree";
 	}
 	
 	
