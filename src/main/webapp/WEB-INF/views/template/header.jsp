@@ -15,17 +15,31 @@
                     <a class="nav-link active" href="/notice/list.iu">공지사항</a>
                      <a class="nav-link active" href="/qna/list.iu">Q&A</a>
                      <a class="nav-link active" href="/member/search.iu">회원검색</a>
+                    <a class="nav-link active" href="/member/logout.iu">로그아웃</a>
+                     
                     
-                    <c:choose>
-                    	<c:when test="${not empty member}">
-		                    <a class="nav-link active" href="/member/myPage.iu">마이페이지</a>  
-		                    <a class="nav-link active" href="/member/logout.iu">로그아웃</a>
-                    	</c:when>
-                    	<c:otherwise>
-		                    <a class="nav-link active" href="/member/login.iu">로그인</a>  
-		                    <a class="nav-link active" href="/member/join.iu">회원가입</a>
-                   		</c:otherwise>
-                    </c:choose>
+                <%-- if else 처럼쓰임 --%>
+                <c:choose>
+                   <%-- if --%>
+                   <c:when test="${empty sessionScope.member}">
+                      <li class="nav-item">
+                          <a class="nav-link active" href="/member/login.iu">로그인</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" href="/member/agree.iu">회원가입</a>
+                      </li>
+                      
+                   </c:when>
+                   
+                   
+                   
+                   <%-- else --%>
+                   <c:otherwise>
+                      <li class="nav-item">
+                          <a class="nav-link active" href="/member/myPage.iu">마이페이지</a>
+                      </li>
+                   </c:otherwise>
+                </c:choose>
                 </div>
                 </div>
             </div>

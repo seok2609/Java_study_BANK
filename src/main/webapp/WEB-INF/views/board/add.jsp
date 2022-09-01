@@ -35,7 +35,7 @@
 			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
 			</div>
 			
-			<div class="mb-3">
+			<!-- <div class="mb-3">
 			  <label for="file" class="form-label">File</label>
 			  <input type="file" name="files" class="form-control" id="file">
 			</div>
@@ -46,13 +46,16 @@
 			<div class="mb-3">
 			  <label for="file" class="form-label">File</label>
 			  <input type="file" name="files" class="form-control" id="file">
-			</div>
+			</div> -->
 
-
+			
+			<div id="addFiles" class="mb-3">
+				<button id="fileAdd" type="button" class="btn btn-secondary">파일 추가</button>
+			</div>
 			
 			
 			<div class="mb-3">
-				<button class="btn btn-success">글쓰기 완료</button>
+				<button type="submit" class="btn btn-success">글쓰기 완료</button>
 			</div>
 			
 		</form>
@@ -63,6 +66,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$("#contents").summernote();
+</script>
+<script src="/resources/JS/board_files.js">
 </script>
 </body>
 </html>

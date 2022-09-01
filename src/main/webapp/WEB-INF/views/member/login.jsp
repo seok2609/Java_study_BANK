@@ -36,7 +36,7 @@
 			  <h4 id="d1">되겠냐?</h4>
 			  
 			  
-			  	<button type="button" class="btn btn-primary" id="btn">로그인</button>
+			  	<button id="btn1" type="submit" class="btn btn-primary" id="btn">로그인</button>
 			</form>
 	</section>
 	  
@@ -56,4 +56,9 @@
     			 crossorigin="anonymous"></script>
 	<script src="/resources/JS/member.js"></script>
 </body>
+
+  <script src="/resources/Js/member.js"></script>
+  <script>
+    logincheck();
+  </script>
 </html>
