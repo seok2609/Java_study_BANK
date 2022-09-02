@@ -28,10 +28,17 @@ function logincheck(){
     function check(){
     
         const all = document.getElementById("all");
-        const cb = document.getElementsByClassName("cb");
+        // const cb = document.getElementsByClassName("cb");
+         const cb = document.querySelectorAll(".cb");           //클래스명 앞엔 . 찍기
         const req = document.getElementsByClassName("req");
         const join = document.getElementById("join");
         const frm = document.getElementById("frm");
+
+
+        console.log("foreach");
+        cb.forEach(function(v, i, ar){
+            console.log(v);
+        });
     
     
    
@@ -51,9 +58,6 @@ function logincheck(){
                 for(let j=0;j<cb.length;j++){
                     if(!cb[j].checked){
                         result = false;
-                        break;
-                    }else{
-                        result = true;
                         break;
                     }
                 }
