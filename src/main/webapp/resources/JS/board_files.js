@@ -15,6 +15,7 @@ fileAdd.addEventListener("click", function(){
         alert("최대 5번만 가능");
         return;
     }
+
     //  <div class="mb-3">
     //     <label for="file" class="form-label">File</label>
     //     <input type="file" name="files" class="form-control" id="file">
@@ -66,7 +67,7 @@ fileAdd.addEventListener("click", function(){
     div.appendChild(input);
 
 
-    //자식 Element button 생성
+    //자식 Element 삭제 button 생성
     let button = document.createElement("button");      //<button>
     let buttonContents = document.createTextNode("삭제"); //"삭제"
     button.appendChild(buttonContents);                 //<button>삭제</button>
@@ -75,7 +76,7 @@ fileAdd.addEventListener("click", function(){
     button.setAttributeNode(buttonAttr);                //<button type = "button"
 
     buttonAttr = document.createAttribute("class");     //class=""
-    buttonAttr.value = "btn btn-danger del";                           //class="del"
+    buttonAttr.value = "del btn btn-danger";                           //class="del"
     button.setAttributeNode(buttonAttr);                    //<button type="button" class="del"
 
     buttonAttr = document.createAttribute("title");
@@ -89,12 +90,15 @@ fileAdd.addEventListener("click", function(){
     
     count ++;
     idx++;
-});
+})
 
 //Element button 삭제이벤트 만들기
 addFiles.addEventListener("click", function(event){
+    let button = event.target;
     if(event.target.classList[0]=='del'){
-        alert("사아아악제에에");
-        console.log(event);
+        alert(button.title);
+        document.getElementById("file" + button.title).remove();
+        count--;                                                    // count--;를 써서 파일삭제후 다시 파일추가를 눌러도 5개까지 생성되게 만듬
+
     }
 });
