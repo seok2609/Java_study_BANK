@@ -34,12 +34,12 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletResponse response) {
 		
-		try {
-			Thread.sleep(10000);			//10초동안 sleep
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);			//10초동안 sleep
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		Cookie cookie = new Cookie("hi", "hello");
 		cookie.setMaxAge(600);
