@@ -74,14 +74,23 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
 		
-
-		mv.setViewName("redirect:./list.iu");
-		
-		if(result == 1) {
-			System.out.println("글 작성 성공!!");
-		}else {
-			System.out.println("글 작성 실패!!");
+		String message = "글 작성 실패";
+		if(result>0) {
+			message = "글 작성 성공!";
+			
 		}
+
+		mv.addObject("result", result);
+		mv.addObject("message", message);
+		mv.addObject("url", "list.iu");
+		
+		mv.setViewName("common/result");
+		
+//		if(result == 1) {
+//			System.out.println("글 작성 성공!!");
+//		}else {
+//			System.out.println("글 작성 실패!!");
+//		}
 		
 		return mv;
 	}
