@@ -59,9 +59,39 @@ function getCommentList(){
             console.log(xhttp.responseText);
 
             //1. jsp 사용한 결과물
-            commentList.innerHTML = xhttp.responseText;
+            // commentList.innerHTML = xhttp.responseText;
 
             //2. JSON 결과물
+            let ar = JSON.parse(xhttp.responseText.trim());
+            let result = document.createElement("table");
+            let resultAttr = document.createAttribute("class");
+
+            resultAttr.value = "table table-dark table-striped";
+           // result.setAttributeNode(resultAttr);
+
+            for(let i=0;i<ar.length;i++){
+
+                let tr = document.createElement("tr");  //<tr></tr>
+                let td = document.createElement("td");  //<td></td>
+                let tdText = document.createTextNode(ar[i].contents);
+                td.appendChild(tdText);
+                tr.appendChild(td);
+                
+
+                td = document.createElement("td");
+                tdText = document.createTextNode(ar[i].writer);
+                td.appendChild(tdText);
+                tr.appendChild(td);
+
+                td = document.createElement("td");
+                tdText = document.createTextNode(ar[i].regDate);
+                td.appendChild(tdText);
+                tr.appendChild(td);
+
+                result.appendChild(tr);
+            }
+            commentList.append(result);
+
         }
     });
 }
