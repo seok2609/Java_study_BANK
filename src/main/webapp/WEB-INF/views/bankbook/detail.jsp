@@ -49,6 +49,7 @@
          <label for="contents" class="form-label">WRITE CONTENTS</label>
          <textarea class="form-control" id="contents" rows="3"></textarea>
       </div>
+	  
 
       <div class="mb-3">
          <button type="button" id="btn" data-bookNum="${dto.bookNum}">댓글 작성</button>

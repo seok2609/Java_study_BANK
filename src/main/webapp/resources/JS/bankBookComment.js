@@ -48,7 +48,7 @@ function getCommentList(){
     const xhttp = new XMLHttpRequest();
 
     //2. Method, URL
-    xhttp.open("GET", "./commentList?page=1&bookNum=" + btn.getAttribute("data-bookNum"));
+    xhttp.open("GET", "./commentList?page=1&bookNum=" + btn.getAttribute("data-bookNum")); //detail.jsp에서 bookNum을 받아오는게 data-bookNum이기때문에 속성을 받아오면 댓글작성한 bookNum의 댓글표가 아래 나옴
 
     //3. 요청 전송
     xhttp.send();
@@ -57,7 +57,11 @@ function getCommentList(){
     xhttp.addEventListener("readystatechange" , function(){
         if(xhttp.readyState == 4 && xhttp.status == 200){
             console.log(xhttp.responseText);
+
+            //1. jsp 사용한 결과물
             commentList.innerHTML = xhttp.responseText;
+
+            //2. JSON 결과물
         }
     });
 }
