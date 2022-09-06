@@ -4,8 +4,20 @@
           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
           
 <mapper namespace="com.iu.start.bankBook.BankBookCommentDAO">
-	<insert id="setComment" parameterType="com.iu.start.bankBook.BankBookCommentDTO">
-		INSERT INTO BB_COMMENT VALUES (#{num}, #{bookNum}, #{writer}, #{contents}, SYSDATE);
+	<select id="getCommentList" parameterType="CommentPager" resultType="BankBookCommentDTO">
+		SELECT * FROM 
+    		(
+        		SELECT ROWNUM R, C.* FROM
+       			 (
+	          		  SELECT * FROM BB_COMMENT
+	          		  WHERE BOOKNUM = #{bookNum}
+	          		  ORDER BY NUM DESC) C)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+
+	<insert id="setCommentAdd" parameterType="BankBookCommentDTO">
+		INSERT INTO BB_COMMENT (NUM, BOOKNUM, WRITER, CONTENTS, REGDATE) 
+		VALUES (BOARD_SEQ.NEXTVAL,#{bookNum},#{writer},#{contents},SYSDATE)
 	</insert>
 </mapper>
           

@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.start.util.CommentPager;
 
 
 @Controller
@@ -201,5 +204,80 @@ public class BankBookController {
 		return mv;
 	}
 	
+	@RequestMapping(value="commentAdd", method = RequestMethod.GET)
+	public void commentAdd() throws Exception{
+		
+	}
+	
+//	@RequestMapping(value = "commentAdd", method = RequestMethod.POST)
+//	public ModelAndView commentAdd (BankBookCommentDTO bankBookCommentDTO) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		System.out.println("booknum="+bankBookCommentDTO.getBookNum());
+//		
+//		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+//		
+//		if(result>0) {
+//			System.out.println("뱅크북 커멘드 성공!");
+//		}else {
+//			System.out.println("뱅크북 커멘드 실패!");
+//		}
+//		
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
+	
+
+	@RequestMapping(value = "commentAdd", method = RequestMethod.POST)
+	@ResponseBody
+	//JSP를 안거치고 body에 바로 담아 응답으로 내보냄.
+	public String commentAdd (BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(bankBookCommentDTO.getBookNum());
+		System.out.println(bankBookCommentDTO.getWriter());
+		
+		System.out.println("booknum="+bankBookCommentDTO.getBookNum());
+		
+		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+		
+		String jsonResult="{\"result\":\""+result+"\"}";
+		
+		return jsonResult;
+	}
+	
+//	//1. JSP 에 출력하고 결과물을 응답으로 전송
+//	@RequestMapping(value = "commentList", method = RequestMethod.GET)
+//	public ModelAndView commentList(CommentPager commentPager) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+//		System.out.println("CommentList");
+//		System.out.println(ar.size());
+//		
+//		mv.addObject("commentList", ar);
+//		mv.setViewName("common/commentList");
+//		
+//		return mv;
+//		
+//	}
+	
+	//1. JSP 에 출력하고 결과물을 응답으로 전송
+	@RequestMapping(value = "commentList", method = RequestMethod.GET)
+	@ResponseBody
+	public List<BankBookCommentDTO> commentList(CommentPager commentPager) throws Exception{
+		
+		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+		System.out.println("CommentList");
+		System.out.println(ar.size());
+		
+		//json
+		// DTO == {}
+		// num =1 == {"num":1, "bookNum":123, "writer":"name"}
+		// [{"num":1, "bookNum":123, "writer":"name"},{"num":1, "bookNum":123, "writer":"name"}]
+		
+		return ar;
+		
+	}
 
 }
