@@ -28,6 +28,24 @@ public class BankBookCommentDAO implements CommentDAO{
 	
 		return sqlSession.selectList(NAMESPACE+"getCommentList", commentPager);
 	}
+
+	@Override
+	public Long getCommentListTotalCount(CommentPager commentPager) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getCommentListTotalCount", commentPager);
+	}
+
+	@Override
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE+"setCommentUpdate", bankBookCommentDTO);
+	}
+
+	@Override
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		
+		return sqlSession.delete(NAMESPACE+"setCommentDelete", bankBookCommentDTO);
+	}
 	
 	
 

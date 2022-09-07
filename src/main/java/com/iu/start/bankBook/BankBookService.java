@@ -56,7 +56,21 @@ public class BankBookService {
 	
 	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) throws Exception{
 		commentPager.getRowNum();
+		Long totalCount = bankBookCommentDAO.getCommentListTotalCount(commentPager);
+		commentPager.makePage(totalCount);
 		return bankBookCommentDAO.getCommentList(commentPager);
+	}
+	
+	//댓글 수정하기
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		
+		return bankBookCommentDAO.setCommentUpdate(bankBookCommentDTO);
+	}
+	
+	//댓글 삭제하기
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		
+		return bankBookCommentDAO.setCommentDelete(bankBookCommentDTO);
 	}
 	
 

@@ -19,5 +19,17 @@
 		INSERT INTO BB_COMMENT (NUM, BOOKNUM, WRITER, CONTENTS, REGDATE) 
 		VALUES (BOARD_SEQ.NEXTVAL,#{bookNum},#{writer},#{contents},SYSDATE)
 	</insert>
+	
+	<select id="getCommentListTotalCount" parameterType="CommentPager" resultType="Long">
+		SELECT COUNT(NUM) FROM BB_COMMENT WHERE BOOKNUM = #{bookNum}
+	</select>
+	
+	<update id="setCommentUpdate" parameterType="BankBookCommentDTO">
+		UPDATE BB_COMMENT SET COTENTS = #{contents} WHERE NUM = #{num}
+	</update>
+	
+	<delete id="setCommentDelete" parameterType="BankBookCommentDTO">
+		DELETE BB_COMMENT WHERE NUM = #{num}
+	</delete>
 </mapper>
           

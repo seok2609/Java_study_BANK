@@ -1,7 +1,9 @@
 package com.iu.start.bankBook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,12 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.util.CommentPager;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 
 @Controller
@@ -207,6 +213,8 @@ public class BankBookController {
 	@RequestMapping(value="commentAdd", method = RequestMethod.GET)
 	public void commentAdd() throws Exception{
 		
+		System.out.println("댓글 달기 GET실행");
+		
 	}
 	
 //	@RequestMapping(value = "commentAdd", method = RequestMethod.POST)
@@ -265,7 +273,7 @@ public class BankBookController {
 	//1. JSP 에 출력하고 결과물을 응답으로 전송
 	@RequestMapping(value = "commentList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<BankBookCommentDTO> commentList(CommentPager commentPager) throws Exception{
+	public Map<String, Object> commentList(CommentPager commentPager) throws Exception{
 		
 		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
 		System.out.println("CommentList");
@@ -276,8 +284,50 @@ public class BankBookController {
 		// num =1 == {"num":1, "bookNum":123, "writer":"name"}
 		// [{"num":1, "bookNum":123, "writer":"name"},{"num":1, "bookNum":123, "writer":"name"}]
 		
-		return ar;
+		// return 해야할 데이터가 ar, commentPager 두개이기 때문에 JSON과 같은 KEY/VALUE 타입인 MAP으로 합쳐서 리턴해야함
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", ar);
+		map.put("pager", commentPager);
 		
+		return map;
+		
+	}
+	
+	@GetMapping("commentUpdate")
+	public void commentUpdate() throws Exception{
+		
+		System.out.println("댓글수정하기 GET실행");
+	}
+	
+	
+	@PostMapping("commentUpdate")
+	@ResponseBody
+	//JSP를 안거치고 body에 바로 담아 응답으로 내보냄.
+	public int commentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+
+		System.out.println("댓글수정하기 POST 실행");
+		
+		int result = bankBookService.setCommentUpdate(bankBookCommentDTO);
+		
+		
+		return result;		
+	}
+	
+	
+	
+	
+	
+	@PostMapping("commentDelete")
+	@ResponseBody
+	//JSP를 안거치고 body에 바로 담아 응답으로 내보냄.
+	public int setCommentDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		
+		System.out.println("댓글 삭제 POST 실행");
+		
+		int result = bankBookService.setCommentDelete(bankBookCommentDTO);
+		
+		
+		return result;
 	}
 
 }

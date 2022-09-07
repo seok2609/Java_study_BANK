@@ -57,14 +57,51 @@
 
 
 	  	<!-- CommentList 출력 -->
-	  <div id="commentList">
-
-	  </div>
+	  <div>
+		<table id="commentList" class="table table-bordered border-primary">
+			<th>내용</th>
+			<th>작성자</th>
+			<th>bookNum</th>
+		</table>
+		
+	</div>
+	<button id="plus" class="btn btn-success disabled">더보기</button>
 	  <!-----------Comment------------>
       
 
    </div>
    <!-- comment끝 -->
+   <!----- Modal ------>
+   <div>
+		<button type="button" style="display: none;" id="up" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">바튼</button>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">수정하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+					<div class="mb-3">
+						<label for="recipient-name" class="col-form-label">작성자</label>
+						<input type="text" class="form-control" id="recipient-name">
+					</div>
+					<div class="mb-3">
+						<label for="message-text" class="col-form-label">내용</label>
+						<textarea class="form-control" id="message-text"></textarea>
+					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
+				</div>
+			</div>
+		</div>
+   </div>
    
    
 		<!-- 상대경로 -->
