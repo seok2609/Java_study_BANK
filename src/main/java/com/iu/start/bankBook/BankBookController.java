@@ -292,13 +292,7 @@ public class BankBookController {
 		return map;
 		
 	}
-	
-	@GetMapping("commentUpdate")
-	public void commentUpdate() throws Exception{
-		
-		System.out.println("댓글수정하기 GET실행");
-	}
-	
+
 	
 	@PostMapping("commentUpdate")
 	@ResponseBody
