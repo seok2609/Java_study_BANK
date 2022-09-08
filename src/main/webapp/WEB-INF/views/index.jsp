@@ -23,7 +23,7 @@
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="500">
+              <div class="carousel-item active" data-bs-interval="700">
                 <img src="/resources/images/cat5.JPG" class="d-block w-100" alt="..." width="800px" height="800px">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>First slide label</h5>
@@ -44,12 +44,12 @@
                   <p>Some representative placeholder content for the third slide.</p>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="800">
-                <img src="/resources/images/cat4.jpg" class="d-block w-100" alt="..." width="800px" height="800px">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Fourth slide label</h5>
-                  <p>Some representative placeholder content for the fourth slide.</p>
+              <div class="carousel-item" data-bs-interval="1000">
+                  <img src="/resources/images/cat6.jpg" class="d-block w-100" alt="..." width="800px" height="800px">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Fourth slide label</h5>
+                    <p>Some representative placeholder content for the fourth slide.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,6 +62,10 @@
               <span class="visually-hidden">Next</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>

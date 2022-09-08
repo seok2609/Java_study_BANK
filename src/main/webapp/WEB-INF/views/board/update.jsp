@@ -17,7 +17,7 @@
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
-		<form action="./add.iu" method="post">
+		<form action="./update.iu" method="post">
 			<input type="hidden" name="num" value="${boardDTO.num}" >
 			<div class="mb-3">
 			  <label for="title" class="form-label">Title</label>

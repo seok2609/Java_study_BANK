@@ -46,6 +46,8 @@ public class HomeController {
 		response.addCookie(cookie);
 		System.out.println(sqlSession);
 		
+		System.out.println("Controller 실행");
+		
 //		Date date = new Date();
 //		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 //		
