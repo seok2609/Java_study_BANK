@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.start.bankMembers.BankMembersDTO;
 import com.iu.start.board.impl.BoardDTO;
 import com.iu.start.util.Pager;
 
@@ -63,10 +64,17 @@ public class NoticeController {
 	
 	
 	//글작성
+	// 로그인 한사람만 글작성할 수 있도록 session을 줘서 로그인한사람은 리턴으로 글쓰기페이지, 비로그인은 로그인페이지로 리턴
 	@RequestMapping(value = "add.iu", method = RequestMethod.GET)
-	public String setAdd() throws Exception{
+	public String setAdd(HttpSession session) throws Exception{
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
 		
-		return "board/add";
+		if(bankMembersDTO != null) {
+			return "board/add";
+		}else {
+			return"redirect:../member/login.iu";
+		}
+		
 	}
 	
 	@RequestMapping(value = "add.iu", method = RequestMethod.POST)

@@ -16,24 +16,35 @@ public class BankBookCommentDAOTest extends MyAbstractTest{
 	@Autowired
 	private BankBookCommentDAO bankBookCommentDAO;
 	
+//	@Test
+//	public void getCommentListTest() throws Exception{
+//		CommentPager commentPager = new CommentPager();
+//		commentPager.setBookNum(3L);
+//		commentPager.setPage(1L);
+//		commentPager.getRowNum();
+//		List<BankBookCommentDTO> ar = bankBookCommentDAO.getCommentList(commentPager);
+//		assertNotEquals(0, ar.size());
+//	}
+//
+//	@Test
+//	public void setCommentAdd() throws Exception{
+//		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
+//		bankBookCommentDTO.setBookNum(1659514160214L);
+//		bankBookCommentDTO.setContents("gkgk");
+//		bankBookCommentDTO.setWriter("dd");
+//		
+//		int result = bankBookCommentDAO.setCommentAdd(bankBookCommentDTO);
+//		assertEquals(1, result);
+//	}
+	
 	@Test
-	public void getCommentListTest() throws Exception{
-		CommentPager commentPager = new CommentPager();
-		commentPager.setBookNum(3L);
-		commentPager.setPage(1L);
-		commentPager.getRowNum();
-		List<BankBookCommentDTO> ar = bankBookCommentDAO.getCommentList(commentPager);
-		assertNotEquals(0, ar.size());
-	}
-
-	@Test
-	public void setCommentAdd() throws Exception{
+	public void setCommentUpdateTest() throws Exception{
 		BankBookCommentDTO bankBookCommentDTO = new BankBookCommentDTO();
-		bankBookCommentDTO.setBookNum(1659514160214L);
-		bankBookCommentDTO.setContents("gkgk");
-		bankBookCommentDTO.setWriter("dd");
+		bankBookCommentDTO.setNum(383L);
+		bankBookCommentDTO.setContents("test");
+		bankBookCommentDTO.setWriter("ggggggg");
 		
-		int result = bankBookCommentDAO.setCommentAdd(bankBookCommentDTO);
+		int result = bankBookCommentDAO.setCommentUpdate(bankBookCommentDTO);
 		assertEquals(1, result);
 	}
 

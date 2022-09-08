@@ -300,6 +300,8 @@ public class BankBookController {
 	public int commentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 
 		System.out.println("댓글수정하기 POST 실행");
+		System.out.println(bankBookCommentDTO.getNum());
+		System.out.println(bankBookCommentDTO.getContents());
 		
 		int result = bankBookService.setCommentUpdate(bankBookCommentDTO);
 		
