@@ -19,6 +19,7 @@
   		 <typeAlias type="com.iu.start.board.impl.BoardFileDTO" alias="BoardFileDTO"/>
   		 <typeAlias type="com.iu.start.bankBook.BankBookCommentDTO" alias="BankBookCommentDTO"/>
   		 <typeAlias type="com.iu.start.util.CommentPager" alias="CommentPager"/>
+  		 <typeAlias type="com.iu.start.bankMembers.RoleDTO" alias="RoleDTO"/>
   		 
   		 
   		 <typeAlias type="java.lang.Long" alias="Long"/>

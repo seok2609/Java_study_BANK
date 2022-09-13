@@ -60,11 +60,11 @@
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
-		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num};	
+		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
 	</update>
 	
 	<delete id="setDelete">
-		DELETE NOTICE WHERE NUM = #{num};
+		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
 	
 	<select id="getCount" resultType="Long" parameterType="Pager">

@@ -10,8 +10,18 @@
 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName},#{userName})
 	</insert>
 
-	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
-		SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} and PASSWORD=#{passWord}
+<!-- id는 DAO의 메서드명과 동일하게 -->
+	<select id="getLogin" parameterType="BankMembersDTO" resultMap="getLoginResult">
+		SELECT BM.USERNAME, BM.NAME, MR.ROLENUM, ROLE.ROLENAME
+		FROM BANKMEMBERS BM
+		    INNER JOIN
+		    MEMBER_ROLE MR
+		    ON BM.USERNAME = MR.USERNAME
+		    INNER JOIN
+		    ROLE ROLE
+		    ON MR.ROLENUM = ROLE.ROLENUM
+		WHERE BM.USERNAME = #{userName} AND BM.PASSWORD = #{passWord}
+		ORDER BY ROLE.ROLENUM ASC
 	</select>
 	
 	<select id="getSearchByID" parameterType="String" resultType="com.iu.start.bankMembers.BankMembersDTO">
@@ -58,6 +68,16 @@
 			<association property="bankBookDTO" javaType="BankBookDTO">
 				<result column="BOOKNAME" property="bookName"/>
 			</association>
+		</collection>
+	</resultMap>
+	
+	<resultMap type="BankMembersDTO" id="getLoginResult">
+		<id column="userName" property="userName"/>
+		<result column="Name" property="name"/>
+		<!-- List 타입은 Collection에 담아야함 -->
+		<collection property="roleDTOs" javaType="List" ofType="RoleDTO">
+			<id column="roleNum" property="roleNum"/>
+			<result column="roleName" property="roleName"/>
 		</collection>
 	</resultMap>
 	

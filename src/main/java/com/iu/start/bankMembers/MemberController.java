@@ -53,7 +53,6 @@ public class MemberController {
 	public ModelAndView login(HttpServletRequest request, BankMembersDTO bankMembersDTO, Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("DB에 로그인 실행");
-
 		
 		bankMembersDTO = bankMembersService.getLogin(bankMembersDTO);
 		System.out.println(bankMembersDTO);

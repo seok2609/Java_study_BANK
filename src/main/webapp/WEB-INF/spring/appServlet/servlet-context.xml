@@ -21,38 +21,44 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- Interceptor 설정 -->
-	<!-- Interceptor 객체 생성 -->
-	<beans:bean class="com.iu.start.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
-	
-	<!-- URL - Interceptor  맵핑 -->
+	<!-- Inerceptor 객체 생성 -->
+	<beans:bean class="com.iu.start.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
+	<beans:bean class="com.iu.start.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+	<!-- URL - Interceptor 맵핑 -->
 	<interceptors>
-	<!-- 	<interceptor>
-			<mapping path="/qna/*"/>
-			<mapping path="/member/myPage.iu"/>
-			exclude : ~을 제외하고
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list.iu"/>
+			<exclude-mapping path="/notice/detail.iu"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+	
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list.iu"/>
+			<exclude-mapping path="/notice/detail.iu"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/**"/>
 			<exclude-mapping path="/qna/list.iu"/>
-			<beans:bean class="com.iu.start.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
-		</interceptor> -->
-		<interceptor>
-			<!-- URL 정보 -->
-			<mapping path="/**"/>
-			<!-- ref: 객체를 참조 -->
-			<beans:ref bean="testInterceptor"/>
+			<exclude-mapping path="/qna/detail.iu"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
-		<interceptor>
-			<mapping path="/qna/update.iu"/>
-			<mapping path="/notice/update.iu"/>
-<!-- 			<exclude-mapping path="/qna/list.iu"/>
-			<exclude-mapping path="/notice/list.iu"/> -->
-			<beans:bean class="com.iu.start.interceptor.WriterCheckInterceptor" id="writerCheckInterceptor"></beans:bean>
+		
+				<interceptor>
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/qna/list.iu"/>
+			<exclude-mapping path="/qna/detail.iu"/>
+			<beans:ref bean="adminCheckInterceptor"/>
 		</interceptor>
-
 		
 	</interceptors>
 	
+	
+	
 	<context:component-scan base-package="com.iu.start" />
 	
-	
-	
-</beans:beans>
+	</beans:beans>
+
