@@ -50,9 +50,9 @@ public class NoticeController {
 //		mv.addObject("board", "Notice");
 		mv.setViewName("board/list");
 		
-		if(ar.size() != 0 ) {
-			throw new Exception();
-		}
+//		if(ar.size() != 0 ) {
+//			throw new Exception();
+//		}
 		
 		return mv;
 	}
