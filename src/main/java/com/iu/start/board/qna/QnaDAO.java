@@ -85,6 +85,12 @@ public class QnaDAO implements BoardDAO{
 		
 		return sqlSession.delete(NAMESPACE+"setFileDelete", boardFileDTO);
 	}
+
+	@Override
+	public BoardFileDTO getFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+	
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail", boardFileDTO);
+	}
 	
 	
 
