@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.start.file.FileDTO;
+
 //Anotation을 이용한 클래스 객체주입
 @Component
 public class FileManager {
@@ -42,6 +44,15 @@ public class FileManager {
 		
 		
 		return fileName;
+	}
+	
+	//delete
+	public boolean deleteFile(ServletContext servletContext, String path, FileDTO fileDTO) throws Exception{
+		String realPath = servletContext.getRealPath(path);
+		System.out.println(realPath);
+		File file = new File(realPath, fileDTO.getFileName());
+		
+		return file.delete();
 	}
 	
 		
