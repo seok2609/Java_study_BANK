@@ -38,9 +38,7 @@
 		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
 			<div class="col">
 				<c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
-					<p>
 					<a href="../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
-					</p>
 				</c:forEach>
 			</div>
 		</div>
@@ -52,7 +50,7 @@
 		
 		<img src="../resources/images/cat2.jpg">
 		<a href="./list.iu" class="btn btn-default" role="button">QNA리스트</a>
-	<a href="./update.iu?num=${boardDTO.num}" class="btn btn-default" role="button">질문수정</a>
+	<a href="./update.iu?num=${boardDTO.num}" class="btn btn-default" role="button">글 수정</a>
 	<a href="./delete.iu?num=${boardDTO.num}" class="btn btn-default" role="button">삭제</a>
 	<a href="./reply.iu?num=${boardDTO.num}" class="btn btn-default" role="button">답글입력</a>
 	</section>
