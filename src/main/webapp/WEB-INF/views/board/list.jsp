@@ -69,8 +69,9 @@
 			</c:forEach>
 			</tbody>
 			</table>
+			
 			<div>
-			<button onclick="location='add.iu'" class="btn btn-primary">글쓰기</button>
+				<button onclick="location='add.iu'" class="btn btn-primary">글쓰기</button>
 			</div>
 			<br>
 

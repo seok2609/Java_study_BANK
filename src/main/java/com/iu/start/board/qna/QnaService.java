@@ -72,11 +72,7 @@ public class QnaService implements BoardService{
 		   }
 
 
-	@Override
-	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, ServletContext servletContext) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext servletContext) throws Exception {

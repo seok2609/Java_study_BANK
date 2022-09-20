@@ -93,9 +93,9 @@ public class QnaController {
 		}
 		
 		@RequestMapping(value = "update.iu", method = RequestMethod.POST)
-		public String setUpdate(BoardDTO boardDTO) throws Exception{
+		public String setUpdate(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
 			
-			int result = qnaService.setUpdate(boardDTO);
+			int result = qnaService.setUpdate(boardDTO, files, session.getServletContext());
 			
 			if(result == 1) {
 				System.out.println("수정에 성공하였습니다!!");
