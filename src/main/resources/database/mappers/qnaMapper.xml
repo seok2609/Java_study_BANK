@@ -36,7 +36,7 @@
 			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
-		VALUES (#{num},            #{title}, #{writer}, #{contents}, SYSDATE, 0, #{num},0 ,0)
+		VALUES (#{num}, #{title}, #{writer}, #{contents}, SYSDATE, 0, #{num},0 ,0)
 	</insert>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
